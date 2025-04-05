@@ -751,87 +751,77 @@
         });
       });
       
-     submitButton.addEventListener("click", function () {
+     <!-- Form HTML yang direvisi -->
+<form id="pengajuan-form" action="https://formsubmit.co/heanshedo.setiawan@gmail.com" method="POST" enctype="multipart/form-data" style="display: none;">
+  <input type="text" name="nama">
+  <input type="text" name="nik">
+  <input type="text" name="phone">
+  <input type="email" name="email">
+  <input type="text" name="alamat">
+  <input type="text" name="status">
+  <input type="text" name="pekerjaan">
+  <input type="text" name="nominal">
+  <input type="text" name="tenor">
+  <input type="text" name="totalPembiayaan">
+  <input type="file" name="ktpFile" id="ktp-input">
+  <input type="file" name="selfieFile" id="selfie-input">
+  <input type="file" name="gajiFile" id="gaji-input">
+</form>
+
+<!-- Submit button click handler -->
+<script>
+const submitButton = document.getElementById("submit-button");
+
+submitButton.addEventListener("click", function () {
   submitButton.disabled = true;
   submitButton.innerHTML =
     '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
 
-  // Ambil input file
-  const ktpFile = document.getElementById("ktp-input").files[0];
-  const selfieFile = document.getElementById("selfie-input").files[0];
-  const gajiFile = document.getElementById("gaji-input").files[0];
+  // Isi form tersembunyi dengan nilai input
+  const form = document.getElementById("pengajuan-form");
+  form.elements["nama"].value = document.getElementById("nama").value;
+  form.elements["nik"].value = document.getElementById("nik").value;
+  form.elements["phone"].value = document.getElementById("phone").value;
+  form.elements["email"].value =
+    document.getElementById("email").value || "heanshedo.setiawan@gmail.com";
+  form.elements["alamat"].value = document.getElementById("alamat").value;
+  form.elements["status"].value =
+    document.querySelector('input[name="status"]:checked')?.value || "";
+  form.elements["pekerjaan"].value = document.getElementById("pekerjaan").value;
+  form.elements["nominal"].value =
+    document.getElementById("nominal-slider").value;
+  form.elements["tenor"].value =
+    document.querySelector('input[name="tenor"]:checked').value;
+  form.elements["totalPembiayaan"].value =
+    document.getElementById("total-pembiayaan").textContent;
 
-  // Buat FormData
-  const formDataToSend = new FormData();
-  formDataToSend.append("nama", document.getElementById("nama").value);
-  formDataToSend.append("nik", document.getElementById("nik").value);
-  formDataToSend.append("phone", document.getElementById("phone").value);
-  formDataToSend.append(
-    "email",
-    document.getElementById("email").value || "heanshedo.setiawan@gmail.com"
-  );
-  formDataToSend.append("alamat", document.getElementById("alamat").value);
-  formDataToSend.append(
-    "status",
-    document.querySelector('input[name="status"]:checked')?.value || ""
-  );
-  formDataToSend.append("pekerjaan", document.getElementById("pekerjaan").value);
-  formDataToSend.append("nominal", document.getElementById("nominal-slider").value);
-  formDataToSend.append(
-    "tenor",
-    document.querySelector('input[name="tenor"]:checked')?.value || ""
-  );
-  formDataToSend.append(
-    "totalPembiayaan",
-    document.getElementById("total-pembiayaan").textContent
-  );
+  // Submit form
+  form.submit();
 
-  // Tambahkan file asli ke FormData
-  if (ktpFile) formDataToSend.append("Foto KTP", ktpFile);
-  if (selfieFile) formDataToSend.append("Selfie KTP", selfieFile);
-  if (gajiFile) formDataToSend.append("Slip Gaji", gajiFile);
-
-  // Kirim pakai fetch ke FormSubmit
-  fetch("https://formsubmit.co/ajax/heanshedo.setiawan@gmail.com", {
-    method: "POST",
-    body: formDataToSend,
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Gagal mengirim");
-      }
-    })
-    .then((data) => {
-      // Tampilkan modal sukses
-      const modal = document.createElement("div");
-      modal.className =
-        "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
-      modal.innerHTML = `
-        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-          <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
-            <i class="ri-check-line ri-2x"></i>
-          </div>
-          <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
-          <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
-          <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
-            Kembali ke Beranda
-          </button>
-        </div>`;
-      document.body.appendChild(modal);
-      document.getElementById("close-modal").addEventListener("click", () => {
-        modal.remove();
-        location.reload(); // atau arahkan ke beranda jika perlu
-      });
-    })
-    .catch((error) => {
-      alert("Gagal mengirim formulir. Silakan coba lagi.");
-      console.error(error);
-      submitButton.disabled = false;
-      submitButton.innerHTML = "Kirim";
-    });
+  // Tampilkan modal sukses
+  setTimeout(() => {
+    const modal = document.createElement("div");
+    modal.className =
+      "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+    modal.innerHTML = `
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
+        <i class="ri-check-line ri-2x"></i>
+      </div>
+      <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
+      <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
+      <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
+        Kembali ke Beranda
+      </button>
+    </div>
+  `;
+    document.body.appendChild(modal);
+    document.getElementById("close-modal").onclick = () => {
+      modal.remove();
+    };
+  }, 3000);
 });
+</script>
 
       `;
           document.body.appendChild(modal);
