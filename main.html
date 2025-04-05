@@ -330,83 +330,66 @@
             </div>
           </div>
         </div>
-        <!-- Upload Dokumen -->
-        <div class="bg-white rounded shadow-sm p-6 mb-6">
-          <h2 class="text-lg font-semibold text-gray-900 mb-4">
-            Upload Dokumen
-          </h2>
-          <div class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
-                >Foto KTP</label
-              >
-              <div
-                class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center"
-              >
-                <div
-                  class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2"
-                >
-                  <i class="ri-id-card-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">
-                  Unggah foto KTP yang jelas dan tidak buram
-                </p>
-                <button
-                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium"
-                >
-                  Pilih File
-                </button>
-                <input type="file" accept="image/*" />
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
-                >Selfie dengan KTP</label
-              >
-              <div
-                class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center"
-              >
-                <div
-                  class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2"
-                >
-                  <i class="ri-camera-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">
-                  Unggah foto selfie dengan memegang KTP
-                </p>
-                <button
-                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium"
-                >
-                  Pilih File
-                </button>
-                <input type="file" accept="image/*" />
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
-                >Slip Gaji/Bukti Penghasilan</label
-              >
-              <div
-                class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center"
-              >
-                <div
-                  class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2"
-                >
-                  <i class="ri-file-list-3-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">
-                  Unggah bukti penghasilan 3 bulan terakhir
-                </p>
-                <button
-                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium"
-                >
-                  Pilih File
-                </button>
-                <input type="file" accept="image/*, application/pdf" />
-              </div>
-            </div>
-          </div>
+<!-- Upload Dokumen -->
+<div class="bg-white rounded shadow-sm p-6 mb-6">
+  <h2 class="text-lg font-semibold text-gray-900 mb-4">Upload Dokumen</h2>
+  <div class="space-y-4">
+    
+    <!-- Foto KTP -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Foto KTP</label>
+      <div id="ktp-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-id-card-line ri-xl"></i>
         </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah foto KTP yang jelas dan tidak buram</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium" onclick="document.getElementById('ktp-input').click()">Pilih File</button>
+        <input id="ktp-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'ktp-box')" />
+      </div>
+    </div>
+
+    <!-- Selfie dengan KTP -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Selfie dengan KTP</label>
+      <div id="selfie-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-camera-line ri-xl"></i>
+        </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah foto selfie dengan memegang KTP</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium" onclick="document.getElementById('selfie-input').click()">Pilih File</button>
+        <input id="selfie-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'selfie-box')" />
+      </div>
+    </div>
+
+    <!-- Slip Gaji -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Slip Gaji/Bukti Penghasilan</label>
+      <div id="gaji-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-file-list-3-line ri-xl"></i>
+        </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah bukti penghasilan 3 bulan terakhir</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium" onclick="document.getElementById('gaji-input').click()">Pilih File</button>
+        <input id="gaji-input" type="file" accept="image/*, application/pdf" class="hidden" onchange="fileUploaded(this, 'gaji-box')" />
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Script untuk mengubah warna border -->
+<script>
+  function fileUploaded(input, boxId) {
+    const box = document.getElementById(boxId);
+    if (input.files.length > 0) {
+      box.classList.remove('border-gray-300');
+      box.classList.add('border-red-500');
+    } else {
+      box.classList.remove('border-red-500');
+      box.classList.add('border-gray-300');
+    }
+  }
+</script>
         <!-- Pengajuan Pembiayaan -->
         <div class="bg-white rounded shadow-sm p-6 mb-6">
           <h2 class="text-lg font-semibold text-gray-900 mb-4">
