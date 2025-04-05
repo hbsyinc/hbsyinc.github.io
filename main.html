@@ -756,25 +756,54 @@
         submitButton.disabled = true;
         submitButton.innerHTML =
           '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
-        // Collect form data
-        const formData = {
-          nama: document.getElementById("nama").value,
-          nik: document.getElementById("nik").value,
-          phone: document.getElementById("phone").value,
-          email:
-            document.getElementById("email").value || "heanshedo.setiawan@gmail.com",
-          alamat: document.getElementById("alamat").value,
-          status: document.querySelector('input[name="status"]:checked')?.value || "",
-          pekerjaan: document.getElementById("pekerjaan").value,
-          nominal: document.getElementById("nominal-slider").value,
-          tenor: document.querySelector('input[name="tenor"]:checked').value,
-          totalPembiayaan: document.getElementById("total-pembiayaan").textContent,
-          // File uploads
-  dokumen: {
-    ktp: document.getElementById("ktp-input").files[0] || null,
-    selfieKtp: document.getElementById("selfie-input").files[0] || null,
-    slipGaji: document.getElementById("gaji-input").files[0] || null,
-  }
+      <form
+  action="https://formspree.io/f/xnnpgyzg"
+  method="POST"
+  enctype="multipart/form-data"
+  id="pengajuan-form"
+  class="space-y-4 bg-white p-6 rounded shadow"
+>
+  <!-- Informasi Pribadi -->
+  <input type="text" name="nama" id="nama" placeholder="Nama" required />
+  <input type="text" name="nik" id="nik" placeholder="NIK" required />
+  <input type="tel" name="phone" id="phone" placeholder="No. HP" required />
+  <input type="email" name="email" id="email" placeholder="Email" value="heanshedo.setiawan@gmail.com" />
+
+  <textarea name="alamat" id="alamat" placeholder="Alamat Lengkap"></textarea>
+
+  <!-- Status (Radio) -->
+  <label>
+    <input type="radio" name="status" value="Karyawan" required />
+    Karyawan
+  </label>
+  <label>
+    <input type="radio" name="status" value="Wiraswasta" />
+    Wiraswasta
+  </label>
+
+  <!-- Pekerjaan -->
+  <input type="text" name="pekerjaan" id="pekerjaan" placeholder="Pekerjaan" />
+
+  <!-- Nominal -->
+  <input type="range" name="nominal" id="nominal-slider" min="1000000" max="10000000" step="500000" />
+  <output id="nominal-output"></output>
+
+  <!-- Tenor (Radio) -->
+  <label><input type="radio" name="tenor" value="12 bulan" required />12 bulan</label>
+  <label><input type="radio" name="tenor" value="24 bulan" />24 bulan</label>
+
+  <!-- Total Pembiayaan -->
+  <input type="text" name="totalPembiayaan" id="total-pembiayaan" readonly />
+
+  <!-- Upload Dokumen -->
+  <label>Foto KTP: <input type="file" name="ktp" id="ktp-input" accept="image/*" required /></label>
+  <label>Selfie dengan KTP: <input type="file" name="selfieKtp" id="selfie-input" accept="image/*" required /></label>
+  <label>Slip Gaji/Bukti Penghasilan: <input type="file" name="slipGaji" id="gaji-input" accept="image/*,application/pdf" required /></label>
+
+  <!-- Tombol Kirim -->
+  <button type="submit">Kirim Pengajuan</button>
+</form>
+
         };
         // Send email using EmailJS or similar service
         // This is a simulation of sending an email
