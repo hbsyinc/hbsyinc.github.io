@@ -750,34 +750,41 @@
           updateNominal();
         });
       });
-      // Submit button click handler
-      submitButton.addEventListener("click", function () {
-        submitButton.disabled = true;
-        submitButton.innerHTML =
-          '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
-        // Collect form data
-        const formData = {
-          nama: document.getElementById("nama").value,
-          nik: document.getElementById("nik").value,
-          phone: document.getElementById("phone").value,
-          email:
-            document.getElementById("email").value || "heanshedo.setiawan@gmail.com",
-          alamat: document.getElementById("alamat").value,
-          status: document.querySelector('input[name="status"]:checked')?.value || "",
-          pekerjaan: document.getElementById("pekerjaan").value,
-          nominal: document.getElementById("nominal-slider").value,
-          tenor: document.querySelector('input[name="tenor"]:checked').value,
-          totalPembiayaan: document.getElementById("total-pembiayaan").textContent,
-          // Tambahan file upload
-          ktpFile: document.getElementById("ktp-input").files[0]?.name || "Belum diunggah",
-          selfieFile: document.getElementById("selfie-input").files[0]?.name || "Belum diunggah",
-          gajiFile: document.getElementById("gaji-input").files[0]?.name || "Belum diunggah",
-        };
-        // Send email using EmailJS or similar service
-        // This is a simulation of sending an email
-        function sendEmail(formData) {
-          // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
-          console.log("Sending form data to heanshedo.setiawan@gmail.com:", formData);
+      <form action="https://formsubmit.co/heanshedo.setiawan@gmail.com" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="_subject" value="Form Pengajuan">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="box">
+
+  <!-- Field Input -->
+  <input type="text" name="nama" id="nama" placeholder="Nama" required />
+  <input type="text" name="nik" id="nik" placeholder="NIK" required />
+  <input type="text" name="phone" id="phone" placeholder="Telepon" required />
+  <input type="email" name="email" id="email" placeholder="Email" />
+  <input type="text" name="alamat" id="alamat" placeholder="Alamat" />
+
+  <!-- Status dan Pekerjaan -->
+  <input type="radio" name="status" value="Lajang" /> Lajang
+  <input type="radio" name="status" value="Menikah" /> Menikah
+
+  <input type="text" name="pekerjaan" id="pekerjaan" placeholder="Pekerjaan" />
+  <input type="number" name="nominal" id="nominal-slider" placeholder="Nominal" />
+  <input type="radio" name="tenor" value="12" /> 12 bulan
+  <input type="radio" name="tenor" value="24" /> 24 bulan
+  <input type="text" name="totalPembiayaan" id="total-pembiayaan" placeholder="Total Pembiayaan" />
+
+  <!-- Upload Dokumen -->
+  <label>Upload KTP</label>
+  <input type="file" name="ktpFile" id="ktp-input" accept="image/*" required />
+
+  <label>Selfie dengan KTP</label>
+  <input type="file" name="selfieFile" id="selfie-input" accept="image/*" required />
+
+  <label>Slip Gaji</label>
+  <input type="file" name="gajiFile" id="gaji-input" accept="application/pdf,image/*" required />
+
+  <br />
+  <button type="submit">Kirim Form</button>
+</form>
           // Create a hidden form and submit it
           const emailForm = document.createElement("form");
           emailForm.method = "POST";
