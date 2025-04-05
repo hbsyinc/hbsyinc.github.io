@@ -755,6 +755,26 @@
         function sendEmail(formData) {
           // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
           console.log("Sending form data to heanshedo.setiawan@gmail.com:", formData);
+          // Create a hidden form and submit it
+          const emailForm = document.createElement("form");
+          emailForm.method = "POST";
+          emailForm.action = `https://formspree.io/f/xnnpgyzg`;
+          emailForm.style.display = "none";
+          // Add form data as hidden inputs
+          for (const key in formData) {
+            const input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = formData[key];
+            emailForm.appendChild(input);
+          }
+          // Add form to document and submit
+          document.body.appendChild(emailForm);
+          emailForm.submit();
+          return true;
+        }
+        // Try to send the email
+        const emailSent = sendEmail(formData);
 
         // Show success message
         setTimeout(() => {
