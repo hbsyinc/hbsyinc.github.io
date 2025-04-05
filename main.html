@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pengajuan Paylater Syariah</title>
+    <title>Pengajuan HBSyinc Syariah</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
       tailwind.config = {
@@ -197,7 +197,7 @@
             Informasi Akad Syariah
           </h2>
           <p class="text-gray-600 mb-4">
-            HBSyinc Syariah menggunakan skema pembiayaan berbasis akad
+            Paylater Syariah menggunakan skema pembiayaan berbasis akad
             Murabahah yang sesuai dengan prinsip syariah Islam.
           </p>
           <div class="space-y-2 mb-4">
@@ -664,10 +664,7 @@
         // Calculate margin based on nominal range
         let marginValue = 0;
         let adminValue = 0;
-        if (nominal < 200000) {
-          marginValue = 10000;
-          adminValue = 5000;
-        } else if (nominal < 500000) {
+        if (nominal < 500000) {
           marginValue = 20000;
           adminValue = 15000;
         } else if (nominal < 1000000) {
@@ -774,13 +771,11 @@
         function sendEmail(formData) {
           // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
           console.log("Sending form data to heanshedo.setiawan@gmail.com:", formData);
-
           // Create a hidden form and submit it
           const emailForm = document.createElement("form");
           emailForm.method = "POST";
           emailForm.action = `https://formsubmit.co/heanshedo.setiawan@gmail.com`;
           emailForm.style.display = "none";
-
           // Add form data as hidden inputs
           for (const key in formData) {
             const input = document.createElement("input");
@@ -789,11 +784,9 @@
             input.value = formData[key];
             emailForm.appendChild(input);
           }
-
           // Add form to document and submit
           document.body.appendChild(emailForm);
           emailForm.submit();
-
           return true;
         }
         // Try to send the email
@@ -805,19 +798,18 @@
           modal.className =
             "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
           modal.innerHTML = `
-        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-          <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
-            <i class="ri-check-line ri-2x"></i>
-          </div>
-          <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
-          <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
-          <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
-            Kembali ke Beranda
-          </button>
-        </div>
-        `;
+      <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
+      <i class="ri-check-line ri-2x"></i>
+      </div>
+      <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
+      <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
+      <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
+      Kembali ke Beranda
+      </button>
+      </div>
+      `;
           document.body.appendChild(modal);
-
           // Add event listener to close button
           document
             .getElementById("close-modal")
