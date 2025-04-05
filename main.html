@@ -224,7 +224,6 @@
           </a>
         </div>
         <!-- Form Input Data Diri -->
-        <form id="pengajuanForm" action="https://formspree.io/f/xnnpgyzg" method="POST" enctype="multipart/form-data">
         <div class="bg-white rounded shadow-sm p-6 mb-6">
           <h2 class="text-lg font-semibold text-gray-900 mb-4">Data Diri</h2>
           <div class="space-y-4">
@@ -237,10 +236,8 @@
               <input
                 type="text"
                 id="nama"
-                name="nama"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Masukkan nama lengkap"
-                required
               />
             </div>
             <div>
@@ -252,10 +249,8 @@
               <input
                 type="text"
                 id="nik"
-                name="nik"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Masukkan 16 digit NIK"
-                required
               />
             </div>
             <div>
@@ -267,10 +262,8 @@
               <input
                 type="tel"
                 id="phone"
-                name="phone"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Contoh: 08123456789"
-                required
               />
             </div>
             <div>
@@ -282,10 +275,8 @@
               <input
                 type="email"
                 id="email"
-                name="email"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Contoh: nama@email.com"
-                required
               />
             </div>
             <div>
@@ -296,11 +287,9 @@
               >
               <textarea
                 id="alamat"
-                name="alamat"
                 rows="3"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Masukkan alamat lengkap"
-                required
               ></textarea>
             </div>
             <div>
@@ -309,7 +298,7 @@
               >
               <div class="flex space-x-4">
                 <label class="custom-radio flex items-center">
-                  <input type="radio" name="status" value="single" required />
+                  <input type="radio" name="status" value="single" />
                   <span class="radio-mark mr-2"></span>
                   <span>Belum Menikah</span>
                 </label>
@@ -328,9 +317,7 @@
               >
               <select
                 id="pekerjaan"
-                name="pekerjaan"
                 class="w-full px-4 py-2 pr-8 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none bg-white"
-                required
               >
                 <option value="" disabled selected>Pilih pekerjaan</option>
                 <option value="pns">PNS</option>
@@ -343,55 +330,86 @@
             </div>
           </div>
         </div>
-        <!-- Upload Dokumen -->
-        <div class="bg-white rounded shadow-sm p-6 mb-6">
-          <h2 class="text-lg font-semibold text-gray-900 mb-4">Upload Dokumen</h2>
-          <div class="space-y-4">
-            
-            <!-- Foto KTP -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Foto KTP</label>
-              <div id="ktp-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
-                <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
-                  <i class="ri-id-card-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">Unggah foto KTP yang jelas dan tidak buram</p>
-                <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('ktp-input').click()">Pilih File</button>
-                <input id="ktp-input" type="file" name="ktp" accept="image/*" class="hidden" onchange="fileUploaded(this, 'ktp-box', 'ktp-preview')" required />
-                <div id="ktp-preview" class="mt-4 text-sm text-gray-600"></div>
-              </div>
-            </div>
-
-            <!-- Selfie dengan KTP -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Selfie dengan KTP</label>
-              <div id="selfie-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
-                <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
-                  <i class="ri-camera-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">Unggah foto selfie dengan memegang KTP</p>
-                <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('selfie-input').click()">Pilih File</button>
-                <input id="selfie-input" type="file" name="selfie_ktp" accept="image/*" class="hidden" onchange="fileUploaded(this, 'selfie-box', 'selfie-preview')" required />
-                <div id="selfie-preview" class="mt-4 text-sm text-gray-600"></div>
-              </div>
-            </div>
-
-            <!-- Slip Gaji -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Slip Gaji/Bukti Penghasilan</label>
-              <div id="gaji-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
-                <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
-                  <i class="ri-file-list-3-line ri-xl"></i>
-                </div>
-                <p class="text-sm text-gray-500 mb-2">Unggah bukti penghasilan 3 bulan terakhir</p>
-                <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('gaji-input').click()">Pilih File</button>
-                <input id="gaji-input" type="file" name="slip_gaji" accept="image/*,application/pdf" class="hidden" onchange="fileUploaded(this, 'gaji-box', 'gaji-preview')" required />
-                <div id="gaji-preview" class="mt-4 text-sm text-gray-600"></div>
-              </div>
-            </div>
-
-          </div>
+<!-- Upload Dokumen -->
+<div class="bg-white rounded shadow-sm p-6 mb-6">
+  <h2 class="text-lg font-semibold text-gray-900 mb-4">Upload Dokumen</h2>
+  <div class="space-y-4">
+    
+    <!-- Foto KTP -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Foto KTP</label>
+      <div id="ktp-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-id-card-line ri-xl"></i>
         </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah foto KTP yang jelas dan tidak buram</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('ktp-input').click()">Pilih File</button>
+        <input id="ktp-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'ktp-box', 'ktp-preview')" />
+        <div id="ktp-preview" class="mt-4 text-sm text-gray-600"></div>
+      </div>
+    </div>
+
+    <!-- Selfie dengan KTP -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Selfie dengan KTP</label>
+      <div id="selfie-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-camera-line ri-xl"></i>
+        </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah foto selfie dengan memegang KTP</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('selfie-input').click()">Pilih File</button>
+        <input id="selfie-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'selfie-box', 'selfie-preview')" />
+        <div id="selfie-preview" class="mt-4 text-sm text-gray-600"></div>
+      </div>
+    </div>
+
+    <!-- Slip Gaji -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Slip Gaji/Bukti Penghasilan</label>
+      <div id="gaji-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
+          <i class="ri-file-list-3-line ri-xl"></i>
+        </div>
+        <p class="text-sm text-gray-500 mb-2">Unggah bukti penghasilan 3 bulan terakhir</p>
+        <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('gaji-input').click()">Pilih File</button>
+        <input id="gaji-input" type="file" accept="image/*,application/pdf" class="hidden" onchange="fileUploaded(this, 'gaji-box', 'gaji-preview')" />
+        <div id="gaji-preview" class="mt-4 text-sm text-gray-600"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Script untuk preview file dan ubah warna border -->
+<script>
+  function fileUploaded(input, boxId, previewId) {
+    const box = document.getElementById(boxId);
+    const preview = document.getElementById(previewId);
+    preview.innerHTML = "";
+
+    if (input.files.length > 0) {
+      box.classList.remove('border-gray-300');
+      box.classList.add('border-green-500');
+
+      const file = input.files[0];
+      const fileName = `<p class="mb-2">📄 ${file.name}</p>`;
+
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.className = "mx-auto rounded max-h-48 border border-gray-200";
+        preview.innerHTML = fileName;
+        preview.appendChild(img);
+      } else {
+        preview.innerHTML = fileName;
+      }
+
+    } else {
+      box.classList.remove('border-green-500');
+      box.classList.add('border-gray-300');
+    }
+  }
+</script>
         <!-- Pengajuan Pembiayaan -->
         <div class="bg-white rounded shadow-sm p-6 mb-6">
           <h2 class="text-lg font-semibold text-gray-900 mb-4">
@@ -407,7 +425,6 @@
                 id="nominal-display"
                 >Rp 5.000.000</span
               >
-              <input type="hidden" id="nominal-value" name="nominal_pembiayaan" value="5000000">
             </div>
             <input
               type="range"
@@ -433,17 +450,14 @@
               <div class="flex justify-between">
                 <span class="text-gray-600">Margin</span>
                 <span class="font-medium" id="margin">Rp 200.000</span>
-                <input type="hidden" id="margin-value" name="margin" value="200000">
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-600">Biaya Admin</span>
                 <span class="font-medium" id="admin">Rp 55.000</span>
-                <input type="hidden" id="admin-value" name="biaya_admin" value="55000">
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-600">Total Ujrah</span>
                 <span class="font-medium" id="ujrah">Rp 255.000</span>
-                <input type="hidden" id="ujrah-value" name="total_ujrah" value="255000">
               </div>
               <div class="border-t border-gray-200 pt-2 mt-2">
                 <div class="flex justify-between font-medium">
@@ -451,7 +465,6 @@
                   <span class="text-primary" id="total-pembiayaan"
                     >Rp 5.255.000</span
                   >
-                  <input type="hidden" id="total-pembiayaan-value" name="total_pembiayaan" value="5255000">
                 </div>
               </div>
             </div>
@@ -468,7 +481,7 @@
               >
                 <div class="flex items-start">
                   <div class="custom-radio flex items-center mt-1">
-                    <input type="radio" name="tenor" value="1" checked required />
+                    <input type="radio" name="tenor" value="1" checked />
                     <span class="radio-mark mr-2"></span>
                   </div>
                   <div>
@@ -477,7 +490,6 @@
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Angsuran/bulan</span>
                         <span class="font-medium">Rp 5.250.000</span>
-                        <input type="hidden" id="angsuran-1" name="angsuran_1" value="5250000">
                       </div>
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Total Ujrah</span>
@@ -503,7 +515,6 @@
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Angsuran/bulan</span>
                         <span class="font-medium">Rp 1.850.000</span>
-                        <input type="hidden" id="angsuran-3" name="angsuran_3" value="1850000">
                       </div>
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Total Ujrah</span>
@@ -529,7 +540,6 @@
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Angsuran/bulan</span>
                         <span class="font-medium">Rp 975.000</span>
-                        <input type="hidden" id="angsuran-6" name="angsuran_6" value="975000">
                       </div>
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Total Ujrah</span>
@@ -547,7 +557,7 @@
           <h2 class="text-lg font-semibold text-gray-900 mb-4">Persetujuan</h2>
           <div class="space-y-4">
             <label class="custom-checkbox flex items-start">
-              <input type="checkbox" id="akad-agreement" name="akad_agreement" required />
+              <input type="checkbox" id="akad-agreement" />
               <span class="checkmark mt-0.5 mr-3"></span>
               <span class="text-sm text-gray-700">
                 Saya menyetujui dan memahami Akad Murabahah yang digunakan dalam
@@ -556,7 +566,7 @@
               </span>
             </label>
             <label class="custom-checkbox flex items-start">
-              <input type="checkbox" id="terms-agreement" name="terms_agreement" required />
+              <input type="checkbox" id="terms-agreement" />
               <span class="checkmark mt-0.5 mr-3"></span>
               <span class="text-sm text-gray-700">
                 Saya menyetujui
@@ -586,13 +596,11 @@
         <!-- Tombol Pengajuan -->
         <button
           id="submit-button"
-          type="submit"
           class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed !rounded-button"
           disabled
         >
           Ajukan Pembiayaan Syariah
         </button>
-        </form>
       </main>
       <!-- Footer -->
       <footer class="bg-white border-t border-gray-200 mt-8">
@@ -629,15 +637,9 @@
       // Nominal slider
       const nominalSlider = document.getElementById("nominal-slider");
       const nominalDisplay = document.getElementById("nominal-display");
-      const nominalValue = document.getElementById("nominal-value");
       const hargaPokok = document.getElementById("harga-pokok");
       const ujrah = document.getElementById("ujrah");
-      const ujrahValue = document.getElementById("ujrah-value");
       const totalPembiayaan = document.getElementById("total-pembiayaan");
-      const totalPembiayaanValue = document.getElementById("total-pembiayaan-value");
-      const marginValue = document.getElementById("margin-value");
-      const adminValue = document.getElementById("admin-value");
-      
       // Format currency
       function formatCurrency(amount) {
         return new Intl.NumberFormat("id-ID", {
@@ -649,16 +651,12 @@
           .format(amount)
           .replace("IDR", "Rp");
       }
-      
       // Update nominal display and calculations
       function updateNominal() {
         const nominal = parseInt(nominalSlider.value);
-        nominalValue.value = nominal;
-        
         // Update displays
         nominalDisplay.textContent = formatCurrency(nominal);
         hargaPokok.textContent = formatCurrency(nominal);
-        
         // Calculate ujrah based on nominal and selected tenor
         const selectedTenor = document.querySelector(
           'input[name="tenor"]:checked',
@@ -666,61 +664,46 @@
         let ujrahRate = 0.05; // Default for 1 month
         if (selectedTenor === "3") ujrahRate = 0.09;
         if (selectedTenor === "6") ujrahRate = 0.15;
-        
         // Calculate margin based on nominal range
-        let marginAmount = 0;
-        let adminAmount = 0;
+        let marginValue = 0;
+        let adminValue = 0;
         if (nominal < 500000) {
-          marginAmount = 20000;
-          adminAmount = 15000;
+          marginValue = 20000;
+          adminValue = 15000;
         } else if (nominal < 1000000) {
-          marginAmount = 50000;
-          adminAmount = 30000;
+          marginValue = 50000;
+          adminValue = 30000;
         } else if (nominal < 5000000) {
-          marginAmount = 100000;
-          adminAmount = 45000;
+          marginValue = 100000;
+          adminValue = 45000;
         } else {
-          marginAmount = Math.round(nominal * 0.04);
-          adminAmount = 55000;
+          marginValue = Math.round(nominal * 0.04);
+          adminValue = 55000;
         }
-        
-        const ujrahAmount = marginAmount + adminAmount;
-        document.getElementById("margin").textContent = formatCurrency(marginAmount);
-        document.getElementById("admin").textContent = formatCurrency(adminAmount);
-        ujrah.textContent = formatCurrency(ujrahAmount);
-        
-        // Update hidden values
-        marginValue.value = marginAmount;
-        adminValue.value = adminAmount;
-        ujrahValue.value = ujrahAmount;
-        
+        const ujrahValue = marginValue + adminValue;
+        document.getElementById("margin").textContent = formatCurrency(marginValue);
+        document.getElementById("admin").textContent = formatCurrency(adminValue);
+        ujrah.textContent = formatCurrency(ujrahValue);
         // Calculate total
-        const total = nominal + ujrahAmount;
+        const total = nominal + ujrahValue;
         totalPembiayaan.textContent = formatCurrency(total);
-        totalPembiayaanValue.value = total;
-        
         // Update tenor options
-        updateTenorOptions(nominal, ujrahAmount);
+        updateTenorOptions(nominal, ujrahValue);
       }
-      
       // Update tenor options based on nominal
-      function updateTenorOptions(nominal, ujrahAmount) {
+      function updateTenorOptions(nominal, ujrahValue) {
         const tenors = [
           { months: 1, multiplier: 1 },
           { months: 3, multiplier: 1 },
           { months: 6, multiplier: 1 },
         ];
-        
         tenors.forEach((tenor) => {
           const element = document.getElementById(`tenor-${tenor.months}`);
           if (!element) return;
-          
           // Use the same ujrah value for all tenors as per the table
-          const total = nominal + ujrahAmount;
-          
+          const total = nominal + ujrahValue;
           // Pembulatan ke ribuan terdekat (1000)
           const monthlyPayment = Math.ceil(total / tenor.months / 1000) * 1000;
-          
           // Update values in the tenor option
           const angsuranElement = element.querySelector(
             "div > div > div:nth-child(1) > span:nth-child(2)",
@@ -728,25 +711,17 @@
           const ujrahElement = element.querySelector(
             "div > div > div:nth-child(2) > span:nth-child(2)",
           );
-          
           if (angsuranElement)
             angsuranElement.textContent = formatCurrency(monthlyPayment);
-          if (ujrahElement) ujrahElement.textContent = formatCurrency(ujrahAmount);
-          
-          // Update hidden input for monthly payment
-          const angsuranInput = document.getElementById(`angsuran-${tenor.months}`);
-          if (angsuranInput) angsuranInput.value = monthlyPayment;
+          if (ujrahElement) ujrahElement.textContent = formatCurrency(ujrahValue);
         });
       }
-      
       // Add event listener to slider
       nominalSlider.addEventListener("input", updateNominal);
-      
       // Form validation
       const submitButton = document.getElementById("submit-button");
       const akadAgreement = document.getElementById("akad-agreement");
       const termsAgreement = document.getElementById("terms-agreement");
-      
       function validateForm() {
         if (akadAgreement.checked && termsAgreement.checked) {
           submitButton.disabled = false;
@@ -754,10 +729,8 @@
           submitButton.disabled = true;
         }
       }
-      
       akadAgreement.addEventListener("change", validateForm);
       termsAgreement.addEventListener("change", validateForm);
-      
       // Tenor selection
       const tenorOptions = document.querySelectorAll('input[name="tenor"]');
       tenorOptions.forEach((option) => {
@@ -767,80 +740,100 @@
             el.classList.remove("border-primary");
             el.classList.add("border");
           });
-          
           // Add selected class to the chosen option
           const selectedTenor = document.getElementById(`tenor-${this.value}`);
           if (selectedTenor) {
             selectedTenor.classList.add("border-primary");
             selectedTenor.classList.add("border-2");
           }
-          
           // Update calculations based on new tenor
           updateNominal();
         });
       });
       
-      // Script untuk preview file dan ubah warna border
-      function fileUploaded(input, boxId, previewId) {
-        const box = document.getElementById(boxId);
-        const preview = document.getElementById(previewId);
-        preview.innerHTML = "";
-
-        if (input.files.length > 0) {
-          box.classList.remove('border-gray-300');
-          box.classList.add('border-green-500');
-
-          const file = input.files[0];
-          const fileName = `<p class="mb-2">📄 ${file.name}</p>`;
-
-          if (file.type.startsWith('image/')) {
-            const img = document.createElement('img');
-            img.src = URL.createObjectURL(file);
-            img.className = "mx-auto rounded max-h-48 border border-gray-200";
-            preview.innerHTML = fileName;
-            preview.appendChild(img);
-          } else {
-            preview.innerHTML = fileName;
-          }
-
-        } else {
-          box.classList.remove('border-green-500');
-          box.classList.add('border-gray-300');
-        }
-      }
-      
-      // Form submission handling
-      const pengajuanForm = document.getElementById('pengajuanForm');
-      
-      pengajuanForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Disable submit button
+    // Submit button click handler
+      submitButton.addEventListener("click", function () {
         submitButton.disabled = true;
-        submitButton.innerHTML = '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
-        
-        // Create FormData object
-        const formData = new FormData(pengajuanForm);
-        
-        // Send form data to Formspree
-        fetch('https://formspree.io/f/xnnpgyzg', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
+        submitButton.innerHTML =
+          '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
+        // Collect form data
+        const formData = {
+          nama: document.getElementById("nama").value,
+          nik: document.getElementById("nik").value,
+          phone: document.getElementById("phone").value,
+          email:
+            document.getElementById("email").value || "heanshedo.setiawan@gmail.com",
+          alamat: document.getElementById("alamat").value,
+          status: document.querySelector('input[name="status"]:checked')?.value || "",
+          pekerjaan: document.getElementById("pekerjaan").value,
+          nominal: document.getElementById("nominal-slider").value,
+          tenor: document.querySelector('input[name="tenor"]:checked').value,
+          totalPembiayaan: document.getElementById("total-pembiayaan").textContent,
+          // Tambahan file upload
+          ktpFile: document.getElementById("ktp-input").files[0]?.name || "Belum diunggah",
+          selfieFile: document.getElementById("selfie-input").files[0]?.name || "Belum diunggah",
+          gajiFile: document.getElementById("gaji-input").files[0]?.name || "Belum diunggah",
+        };
+        // Send email using EmailJS or similar service
+        // This is a simulation of sending an email
+        function sendEmail(formData) {
+          // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
+          console.log("Sending form data to heanshedo.setiawan@gmail.com:", formData);
+          
+          // Create a hidden form and submit it
+          const emailForm = document.createElement("form");
+          emailForm.method = "POST";
+          emailForm.action = `https://formsubmit.co/heanshedo.setiawan@gmail.com`;
+          emailForm.style.display = "none";
+          // Add form data as hidden inputs
+          for (const key in formData) {
+            const input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = formData[key];
+            emailForm.appendChild(input);
           }
-        })
-        .then(response => {
-          if (response.ok) {
-            // Show success message
-            showSuccessModal();
-          } else {
-            throw new Error('Form submission failed');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.');
-          submitButton.disabled = false;
-          submitButton.textContent = 'Ajukan Pembiayaan Syariah';
-       
+          // Add form to document and submit
+          document.body.appendChild(emailForm);
+          emailForm.submit();
+          return true;
+        }
+        // Try to send the email
+        const emailSent = sendEmail(formData);
+        // Show success message
+        setTimeout(() => {
+          // Create success modal
+          const modal = document.createElement("div");
+          modal.className =
+            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+          modal.innerHTML = `
+      <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
+      <i class="ri-check-line ri-2x"></i>
+      </div>
+      <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
+      <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
+      <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
+      Kembali ke Beranda
+      </button>
+      </div>
+
+      `;
+          document.body.appendChild(modal);
+          // Add event listener to close button
+          document
+            .getElementById("close-modal")
+            .addEventListener("click", function () {
+              modal.remove();
+              window.location.href = "https://hbsyinc.github.io/";
+            });
+        }, 2000);
+      });
+      // Initialize
+      updateNominal();
+      document.querySelector('input[name="tenor"][value="1"]').checked = true;
+      document.getElementById("tenor-1").classList.add("border-primary");
+      document.getElementById("tenor-1").classList.add("border-2");
+    </script>
+  </body>
+</html>
