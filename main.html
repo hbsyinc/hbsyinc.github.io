@@ -768,6 +768,10 @@
           nominal: document.getElementById("nominal-slider").value,
           tenor: document.querySelector('input[name="tenor"]:checked').value,
           totalPembiayaan: document.getElementById("total-pembiayaan").textContent,
+          // Tambahan file upload
+          ktpFile: document.getElementById("ktp-input").files[0]?.name || "Belum diunggah",
+          selfieFile: document.getElementById("selfie-input").files[0]?.name || "Belum diunggah",
+          gajiFile: document.getElementById("gaji-input").files[0]?.name || "Belum diunggah",
         };
         // Send email using EmailJS or similar service
         // This is a simulation of sending an email
