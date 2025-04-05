@@ -333,7 +333,7 @@
 <!-- Upload Dokumen -->
 <div class="bg-white rounded shadow-sm p-6 mb-6">
   <h2 class="text-lg font-semibold text-gray-900 mb-4">Upload Dokumen</h2>
-  <div class="space-y-4">
+  <div class="space-y-6">
     
     <!-- Foto KTP -->
     <div>
@@ -344,7 +344,7 @@
         </div>
         <p class="text-sm text-gray-500 mb-2">Unggah foto KTP yang jelas dan tidak buram</p>
         <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('ktp-input').click()">Pilih File</button>
-        <input id="ktp-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'ktp-box', 'ktp-preview')" />
+        <input name="ktp" id="ktp-input" type="file" accept="image/*" class="hidden" required onchange="fileUploaded(this, 'ktp-box', 'ktp-preview')" />
         <div id="ktp-preview" class="mt-4 text-sm text-gray-600"></div>
       </div>
     </div>
@@ -354,25 +354,25 @@
       <label class="block text-sm font-medium text-gray-700 mb-2">Selfie dengan KTP</label>
       <div id="selfie-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
         <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
-          <i class="ri-camera-line ri-xl"></i>
+          <i class="ri-user-line ri-xl"></i>
         </div>
-        <p class="text-sm text-gray-500 mb-2">Unggah foto selfie dengan memegang KTP</p>
+        <p class="text-sm text-gray-500 mb-2">Unggah foto selfie sambil memegang KTP</p>
         <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('selfie-input').click()">Pilih File</button>
-        <input id="selfie-input" type="file" accept="image/*" class="hidden" onchange="fileUploaded(this, 'selfie-box', 'selfie-preview')" />
+        <input name="selfieKtp" id="selfie-input" type="file" accept="image/*" class="hidden" required onchange="fileUploaded(this, 'selfie-box', 'selfie-preview')" />
         <div id="selfie-preview" class="mt-4 text-sm text-gray-600"></div>
       </div>
     </div>
 
     <!-- Slip Gaji -->
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-2">Slip Gaji/Bukti Penghasilan</label>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Slip Gaji / Bukti Penghasilan</label>
       <div id="gaji-box" class="file-input-container border-2 border-dashed border-gray-300 rounded p-4 text-center transition-colors duration-300">
         <div class="w-12 h-12 mx-auto flex items-center justify-center bg-blue-50 rounded-full text-primary mb-2">
           <i class="ri-file-list-3-line ri-xl"></i>
         </div>
-        <p class="text-sm text-gray-500 mb-2">Unggah bukti penghasilan 3 bulan terakhir</p>
+        <p class="text-sm text-gray-500 mb-2">Unggah slip gaji atau dokumen penghasilan dalam format gambar atau PDF</p>
         <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium" onclick="document.getElementById('gaji-input').click()">Pilih File</button>
-        <input id="gaji-input" type="file" accept="image/*,application/pdf" class="hidden" onchange="fileUploaded(this, 'gaji-box', 'gaji-preview')" />
+        <input name="slipGaji" id="gaji-input" type="file" accept="image/*,application/pdf" class="hidden" required onchange="fileUploaded(this, 'gaji-box', 'gaji-preview')" />
         <div id="gaji-preview" class="mt-4 text-sm text-gray-600"></div>
       </div>
     </div>
@@ -380,33 +380,19 @@
   </div>
 </div>
 
-<!-- Script untuk preview file dan ubah warna border -->
+<!-- JavaScript untuk preview file -->
 <script>
   function fileUploaded(input, boxId, previewId) {
-    const box = document.getElementById(boxId);
+    const file = input.files[0];
     const preview = document.getElementById(previewId);
-    preview.innerHTML = "";
+    const box = document.getElementById(boxId);
 
-    if (input.files.length > 0) {
-      box.classList.remove('border-gray-300');
-      box.classList.add('border-green-500');
-
-      const file = input.files[0];
-      const fileName = `<p class="mb-2">📄 ${file.name}</p>`;
-
-      if (file.type.startsWith('image/')) {
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        img.className = "mx-auto rounded max-h-48 border border-gray-200";
-        preview.innerHTML = fileName;
-        preview.appendChild(img);
-      } else {
-        preview.innerHTML = fileName;
-      }
-
+    if (file) {
+      preview.textContent = `File terpilih: ${file.name}`;
+      box.classList.add("border-green-500");
     } else {
-      box.classList.remove('border-green-500');
-      box.classList.add('border-gray-300');
+      preview.textContent = "";
+      box.classList.remove("border-green-500");
     }
   }
 </script>
