@@ -751,72 +751,88 @@
         });
       });
       
-      // Submit button click handler
-      submitButton.addEventListener("click", function () {
-        submitButton.disabled = true;
-        submitButton.innerHTML =
-          '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
-        // Collect form data
-        const formData = {
-          nama: document.getElementById("nama").value,
-          nik: document.getElementById("nik").value,
-          phone: document.getElementById("phone").value,
-          email:
-            document.getElementById("email").value || "heanshedo.setiawan@gmail.com",
-          alamat: document.getElementById("alamat").value,
-          status: document.querySelector('input[name="status"]:checked')?.value || "",
-          pekerjaan: document.getElementById("pekerjaan").value,
-          nominal: document.getElementById("nominal-slider").value,
-          tenor: document.querySelector('input[name="tenor"]:checked').value,
-          totalPembiayaan: document.getElementById("total-pembiayaan").textContent,
-          // Tambahan file upload
-          ktpFile: document.getElementById("ktp-input").files[0]?.name || "Belum diunggah",
-          selfieFile: document.getElementById("selfie-input").files[0]?.name || "Belum diunggah",
-          gajiFile: document.getElementById("gaji-input").files[0]?.name || "Belum diunggah",
-        };
-        // Send email using EmailJS or similar service
-        // This is a simulation of sending an email
-        function sendEmail(formData) {
-          // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
-          console.log("Sending form data to heanshedo.setiawan@gmail.com:", formData);
-          
-          // Create a hidden form and submit it
-          const emailForm = document.createElement("form");
-          emailForm.method = "POST";
-          emailForm.action = `https://formsubmit.co/heanshedo.setiawan@gmail.com`;
-          emailForm.style.display = "none";
-          // Add form data as hidden inputs
-          for (const key in formData) {
-            const input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = formData[key];
-            emailForm.appendChild(input);
-          }
-          // Add form to document and submit
-          document.body.appendChild(emailForm);
-          emailForm.submit();
-          return true;
-        }
-        // Try to send the email
-        const emailSent = sendEmail(formData);
-        // Show success message
-        setTimeout(() => {
-          // Create success modal
-          const modal = document.createElement("div");
-          modal.className =
-            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
-          modal.innerHTML = `
-      <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-      <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
-      <i class="ri-check-line ri-2x"></i>
-      </div>
-      <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
-      <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
-      <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
-      Kembali ke Beranda
-      </button>
-      </div>
+     submitButton.addEventListener("click", function () {
+  submitButton.disabled = true;
+  submitButton.innerHTML =
+    '<span class="inline-block animate-spin mr-2">⟳</span> Memproses...';
+
+  // Ambil input file
+  const ktpFile = document.getElementById("ktp-input").files[0];
+  const selfieFile = document.getElementById("selfie-input").files[0];
+  const gajiFile = document.getElementById("gaji-input").files[0];
+
+  // Buat FormData
+  const formDataToSend = new FormData();
+  formDataToSend.append("nama", document.getElementById("nama").value);
+  formDataToSend.append("nik", document.getElementById("nik").value);
+  formDataToSend.append("phone", document.getElementById("phone").value);
+  formDataToSend.append(
+    "email",
+    document.getElementById("email").value || "heanshedo.setiawan@gmail.com"
+  );
+  formDataToSend.append("alamat", document.getElementById("alamat").value);
+  formDataToSend.append(
+    "status",
+    document.querySelector('input[name="status"]:checked')?.value || ""
+  );
+  formDataToSend.append("pekerjaan", document.getElementById("pekerjaan").value);
+  formDataToSend.append("nominal", document.getElementById("nominal-slider").value);
+  formDataToSend.append(
+    "tenor",
+    document.querySelector('input[name="tenor"]:checked')?.value || ""
+  );
+  formDataToSend.append(
+    "totalPembiayaan",
+    document.getElementById("total-pembiayaan").textContent
+  );
+
+  // Tambahkan file asli ke FormData
+  if (ktpFile) formDataToSend.append("Foto KTP", ktpFile);
+  if (selfieFile) formDataToSend.append("Selfie KTP", selfieFile);
+  if (gajiFile) formDataToSend.append("Slip Gaji", gajiFile);
+
+  // Kirim pakai fetch ke FormSubmit
+  fetch("https://formsubmit.co/ajax/heanshedo.setiawan@gmail.com", {
+    method: "POST",
+    body: formDataToSend,
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Gagal mengirim");
+      }
+    })
+    .then((data) => {
+      // Tampilkan modal sukses
+      const modal = document.createElement("div");
+      modal.className =
+        "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+      modal.innerHTML = `
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+          <div class="w-16 h-16 mx-auto flex items-center justify-center bg-green-100 rounded-full text-green-500 mb-4">
+            <i class="ri-check-line ri-2x"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center text-gray-900 mb-2">Pengajuan Berhasil</h3>
+          <p class="text-gray-600 text-center mb-4">Pengajuan Anda telah berhasil dikirim ke heanshedo.setiawan@gmail.com</p>
+          <button id="close-modal" class="w-full bg-primary text-white font-medium py-3 px-4 rounded-button shadow-sm hover:bg-blue-700 transition-colors !rounded-button">
+            Kembali ke Beranda
+          </button>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById("close-modal").addEventListener("click", () => {
+        modal.remove();
+        location.reload(); // atau arahkan ke beranda jika perlu
+      });
+    })
+    .catch((error) => {
+      alert("Gagal mengirim formulir. Silakan coba lagi.");
+      console.error(error);
+      submitButton.disabled = false;
+      submitButton.innerHTML = "Kirim";
+    });
+});
+
       `;
           document.body.appendChild(modal);
           // Add event listener to close button
