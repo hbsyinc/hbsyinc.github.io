@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HBSyinc Syariah - Pembiayaan Berbasis Syariah</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#00796b',secondary:'#4db6ac'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #00796b;
+cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #00796b;
+cursor: pointer;
+}
+.custom-radio:checked + label {
+background-color: #00796b;
+color: white;
+border-color: #00796b;
+}
+.custom-checkbox:checked + label:before {
+background-color: #00796b;
+border-color: #00796b;
+content: '\2713';
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.file-input-container input[type="file"] {
+position: absolute;
+width: 0;
+height: 0;
+opacity: 0;
+}
+.progress-step.active {
+background-color: #00796b;
+color: white;
+}
+.progress-step.completed {
+background-color: #4db6ac;
+color: white;
+}
+.progress-line {
+position: absolute;
+top: 50%;
+left: 0;
+right: 0;
+height: 2px;
+background-color: #e5e7eb;
+z-index: -1;
+}
+.progress-line-fill {
+height: 100%;
+background-color: #00796b;
+transition: width 0.3s ease;
+}
+@media (max-width: 768px) {
+.container {
+width: 100%;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+.progress-step span {
+font-size: 0.75rem;
+}
+.file-input-container {
+width: 100%;
+}
+}
+</style>
+</head> 
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a href="index.html">
+  <img src="image.jpg" alt="Logo HBSync Syariah" width="300">
+</a>
+<nav class="hidden md:flex space-x-6">
+<a href="index.html" class="font-medium text-primary">Beranda</a>
+<a href="#kalkulator" class="font-medium text-gray-600 hover:text-primary transition">Kalkulator</a>
+<a href="#tentang-kami" class="font-medium text-gray-600 hover:text-primary transition">Tentang Kami</a>
+<a href="#hubungi-kami" class="font-medium text-gray-600 hover:text-primary transition">Hubungi Kami</a>
+</nav>
+<div class="flex items-center">
+<a href="#application-form" class="hidden md:block px-6 py-2 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Ajukan Sekarang</a>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+<nav id="mobile-menu" class="hidden flex-col bg-white px-4 py-2 shadow-md">
+<a href="index.html" class="py-2 font-medium text-primary">Beranda</a>
+<a href="#kalkulator" class="py-2 font-medium text-gray-600 hover:text-primary transition">Kalkulator</a>
+<a href="#tentang-kami" class="py-2 font-medium text-gray-600 hover:text-primary transition">Tentang Kami</a>
+<a href="#hubungi-kami" class="py-2 font-medium text-gray-600 hover:text-primary transition">Hubungi Kami</a>
+<a href="#application-form" class="text-center px-6 py-2 bg-primary text-white border border-white font-medium rounded-button shadow-lg hover:bg-opacity-90 transition whitespace-nowrap">Ajukan Sekarang</a>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative bg-cover bg-center" style="background-image: url('https://static.readdy.ai/image/dd33a3a8a1255ffadbe230a70503ee7f/edda31c2e7454e5cc6ab953482a1f029.png');">
+<div class="absolute inset-0 bg-primary bg-opacity-70"></div>
+<div class="container mx-auto px-4 py-12 md:py-16 relative z-10">
+<div class="max-w-2xl">
+<h2 class="font-['Pacifico'] text-2xl md:text-3xl text-white mb-2">HBSyinc Syariah</h2>
+<h1 class="text-2xl md:text-4xl font-bold text-white mb-4">Tumbuh Bersama Desa, Berkah untuk Semua</h1>
+<p class="text-base md:text-lg text-white mb-8">Hadir di tengah kebutuhan Kota Ngawi dan Kawasan Desa Pertanian, HBSyinc Syariah menawarkan solusi pembiayaan berbasis syariah melalui skema Murabahah.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#kalkulator" class="text-center px-6 py-2 bg-white text-primary font-medium rounded-button shadow-lg hover:bg-gray-50 transition whitespace-nowrap inline-block">Hitung Pembiayaan</a>
+<a href="#application-form" class="text-center px-6 py-2 bg-primary text-white border border-white font-medium rounded-button shadow-lg hover:bg-opacity-90 transition whitespace-nowrap">Ajukan Sekarang</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Tentang HBSyinc Syariah -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Judul Section -->
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+      Tentang HBSyinc Syariah
+    </h2>
+
+    <!-- Konten: Logo + Deskripsi -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- Logo -->
+      <div class="flex justify-center">
+        <div class="bg-green-50 p-6 rounded-xl shadow-md w-full max-w-sm flex items-center justify-center">
+          <img 
+            src="image.jpg" 
+            alt="Logo HBSyinc Syariah" 
+            class="w-full h-auto object-contain"
+          >
+        </div>
+      </div>
+
+      <!-- Deskripsi -->
+      <div>
+        <p class="text-gray-600 mb-4 text-justify">
+          Kami menyediakan solusi pembiayaan syariah yang inovatif dan terpercaya untuk masyarakat pedesaan dan perkotaan. Dengan pendekatan yang ramah dan transparan pada setiap proses, kami membantu mewujudkan impian. HBSyinc Syariah adalah lembaga keuangan berbasis pembiayaan, kini hadir di Ngawi, Jawa Timur.
+        </p>
+        <p class="text-gray-700 font-semibold text-justify">
+          HBSyinc Syariah – Membangun Harapan, Menjaga Nilai
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Bagaimana Cara Kerjanya -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Bagaimana Cara Kerjanya</h2>
+<p class="text-gray-600 text-center mb-12">Proses pengajuan pembiayaan yang mudah, cepat, dan transparan</p>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-3">Hitung Simulasi</h3>
+<p class="text-gray-600">Gunakan kalkulator pembiayaan untuk simulasi jumlah dan angsuran</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-3">Ajukan Pembiayaan</h3>
+<p class="text-gray-600">Isi formulir pengajuan dengan data lengkap dan dokumen pendukung</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-3">Verifikasi</h3>
+<p class="text-gray-600">Tim kami akan memeriksa data dan menghubungi untuk konfirmasi</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">4</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-3">Pencairan</h3>
+<p class="text-gray-600">Setelah disetujui, pembiayaan akan dicairkan untuk kebutuhan Anda</p>
+</div>
+</div>
+<div class="flex justify-center mt-12">
+<a href="#application-form" class="px-6 py-2 bg-primary text-white font-medium rounded-button shadow-lg hover:bg-opacity-90 transition whitespace-nowrap inline-block">Ajukan Sekarang</a>
+</div>
+</div>
+</section>
+<!-- Siap Tumbuh Bersama -->
+<section class="py-16 relative bg-cover bg-center" style="background-image: url('https://static.readdy.ai/image/dd33a3a8a1255ffadbe230a70503ee7f/edda31c2e7454e5cc6ab953482a1f029.png');">
+<div class="absolute inset-0 bg-primary bg-opacity-70"></div>
+<div class="container mx-auto px-4 text-center relative z-10 text-white">
+<h2 class="text-3xl font-bold mb-4">Siap Tumbuh Bersama HBSyinc Syariah?</h2>
+<p class="text-lg mb-8">Ajukan pembiayaan syariah untuk kebutuhan usaha atau rumah tangga Anda sekarang</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="kalkulator.html" class="px-6 py-2 bg-white text-primary font-medium rounded-button shadow-lg hover:bg-gray-50 transition whitespace-nowrap inline-block">Hitung Pembiayaan</a>
+<button class="px-6 py-2 bg-transparent text-white border border-white font-medium rounded-button shadow-lg hover:bg-white hover:bg-opacity-10 transition whitespace-nowrap">Ajukan Sekarang</button>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-2">Pengajuan Pembiayaan</h2>
+<p class="text-gray-600 text-center mb-12">Isi formulir di bawah ini untuk mengajukan pembiayaan berbasis akad Murabahah</p>
+<!-- Progress Indicator -->
+<div class="relative mb-16">
+<div class="progress-line">
+<div class="progress-line-fill" style="width: 0%"></div>
+</div>
+<div class="flex justify-between relative z-10">
+<div class="progress-step active flex flex-col items-center">
+<div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2">1</div>
+<span class="text-xs md:text-sm font-medium">Data Diri</span>
+</div>
+<div class="progress-step flex flex-col items-center">
+<div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center mb-2">2</div>
+<span class="text-xs md:text-sm font-medium">Dokumen</span>
+</div>
+<div class="progress-step flex flex-col items-center">
+<div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center mb-2">3</div>
+<span class="text-xs md:text-sm font-medium">Pembiayaan</span>
+</div>
+<div class="progress-step flex flex-col items-center">
+<div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center mb-2">4</div>
+<span class="text-xs md:text-sm font-medium">Persetujuan</span>
+</div>
+</div>
+</div>
+<!-- Form Sections -->
+<form id="application-form">
+<!-- Section 1: Data Diri -->
+<div id="section-1" class="form-section bg-white p-8 rounded-lg shadow-md mb-8">
+<h3 class="text-xl font-semibold text-gray-800 mb-6">Data Diri</h3>
+<p class="text-sm text-gray-500 mb-4">Kolom dengan tanda <span class="text-red-500">*</span> wajib diisi</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+<input type="text" id="fullname" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan nama lengkap">
+</div>
+<div>
+<label for="nik" class="block text-sm font-medium text-gray-700 mb-1">NIK <span class="text-red-500">*</span></label>
+<input type="text" id="nik" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan 16 digit NIK">
+</div>
+<div>
+<label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Nomor Handphone <span class="text-red-500">*</span></label>
+<input type="text" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Contoh: 08123456789">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan alamat email">
+</div>
+<div class="md:col-span-2">
+<label for="address" class="block text-sm font-medium text-gray-700 mb-1">Alamat Lengkap</label>
+<textarea id="address" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan alamat lengkap"></textarea>
+</div>
+<div>
+<label for="marital-status" class="block text-sm font-medium text-gray-700 mb-1">Status Pernikahan</label>
+<div class="relative">
+<select id="marital-status" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none pr-8">
+<option value="" disabled selected>Pilih status</option>
+<option value="single">Belum Menikah</option>
+<option value="married">Menikah</option>
+<option value="divorced">Cerai</option>
+<option value="widowed">Janda/Duda</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div>
+<label for="occupation" class="block text-sm font-medium text-gray-700 mb-1">Jenis Pekerjaan</label>
+<div class="relative">
+<select id="occupation" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none pr-8">
+<option value="" disabled selected>Pilih pekerjaan</option>
+<option value="pns">PNS</option>
+<option value="swasta">Karyawan Swasta</option>
+<option value="wiraswasta">Wiraswasta</option>
+<option value="freelance">Pekerja Lepas</option>
+<option value="other">Lainnya</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button type="button" id="next-to-section-2" class="px-6 py-2 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Lanjutkan</button>
+</div>
+</div>
+<!-- Section 2: Unggah Dokumen -->
+<div id="section-2" class="form-section bg-white p-8 rounded-lg shadow-md mb-8 hidden">
+<h3 class="text-xl font-semibold text-gray-800 mb-6">Unggah Dokumen</h3>
+<p class="text-sm text-gray-500 mb-4">Kolom dengan tanda <span class="text-red-500">*</span> wajib diisi</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="file-input-container">
+<p class="text-sm font-medium text-gray-700 mb-2">Foto KTP <span class="text-red-500">*</span></p>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-primary transition cursor-pointer">
+<input type="file" id="ktp-upload" accept="image/*" capture="environment">
+<div id="ktp-preview" class="h-40 flex items-center justify-center">
+<div class="text-center">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-400 mb-2">
+<i class="ri-image-add-line ri-2x"></i>
+</div>
+<p class="text-sm text-gray-500">Klik untuk unggah</p>
+<p class="text-xs text-gray-400 mt-1">Format: JPG, PNG, PDF</p>
+</div>
+</div>
+</div>
+</div>
+<div class="file-input-container">
+<p class="text-sm font-medium text-gray-700 mb-2">Selfie dengan KTP <span class="text-red-500">*</span></p>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-primary transition cursor-pointer">
+<input type="file" id="selfie-upload" accept="image/*" capture="user">
+<div id="selfie-preview" class="h-40 flex items-center justify-center">
+<div class="text-center">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-400 mb-2">
+<i class="ri-camera-line ri-2x"></i>
+</div>
+<p class="text-sm text-gray-500">Klik untuk unggah</p>
+<p class="text-xs text-gray-400 mt-1">Format: JPG, PNG</p>
+</div>
+</div>
+</div>
+</div>
+<div class="file-input-container">
+<p class="text-sm font-medium text-gray-700 mb-2">Slip Gaji/Bukti Penghasilan</p>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-primary transition cursor-pointer">
+<input type="file" id="income-upload" accept="image/*,.pdf">
+<div id="income-preview" class="h-40 flex items-center justify-center">
+<div class="text-center">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-400 mb-2">
+<i class="ri-file-list-3-line ri-2x"></i>
+</div>
+<p class="text-sm text-gray-500">Klik untuk unggah</p>
+<p class="text-xs text-gray-400 mt-1">3 bulan terakhir</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-between">
+<button type="button" id="back-to-section-1" class="px-6 py-2 bg-gray-200 text-gray-700 font-medium rounded-button shadow hover:bg-gray-300 transition whitespace-nowrap">Kembali</button>
+<button type="button" id="next-to-section-3" class="px-6 py-2 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Lanjutkan</button>
+</div>
+</div>
+<!-- Section 3: Pengajuan Pembiayaan -->
+<div id="section-3" class="form-section bg-white p-8 rounded-lg shadow-md mb-8 hidden">
+<h3 class="text-xl font-semibold text-gray-800 mb-6">Pengajuan Pembiayaan</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div>
+<label for="item-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Barang <span class="text-red-500">*</span></label>
+<input type="text" id="item-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan nama barang">
+</div>
+<div>
+<label for="item-price" class="block text-sm font-medium text-gray-700 mb-1">Harga Barang <span class="text-red-500">*</span></label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">Rp</span>
+<input type="text" id="item-price" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="5.000.000">
+</div>
+</div>
+</div>
+<div class="mb-8">
+<label for="loan-amount" class="block text-sm font-medium text-gray-700 mb-1">Nominal Pembiayaan</label>
+<div class="flex items-center gap-4">
+<span class="text-lg font-medium text-gray-800">Rp</span>
+<input type="range" id="loan-amount" min="100000" max="10000000" step="100000" value="5000000" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer">
+<span id="loan-amount-display" class="text-lg font-medium text-gray-800">5.000.000</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500 mt-1">
+<span>Rp 100.000</span>
+<span>Rp 10.000.000</span>
+</div>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg mb-8">
+<h4 class="text-base font-medium text-gray-800 mb-4">Rincian Biaya</h4>
+<div class="space-y-3">
+<div class="flex justify-between">
+<span class="text-gray-600">Harga Pokok</span>
+<span id="principal-amount" class="font-medium">Rp 5.000.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Margin</span>
+<span id="margin-amount" class="font-medium">Rp 500.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Biaya Administrasi</span>
+<span id="admin-fee" class="font-medium">Rp 100.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Total Ujrah</span>
+<span id="total-ujrah" class="font-medium">Rp 600.000</span>
+</div>
+<div class="pt-3 border-t border-gray-200 flex justify-between">
+<span class="font-medium text-gray-800">Total Pembiayaan</span>
+<span id="total-financing" class="font-bold text-primary">Rp 5.600.000</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-base font-medium text-gray-800 mb-4">Pilihan Tenor</h4>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div>
+<input type="radio" id="tenor-1" name="tenor" value="1" class="custom-radio hidden">
+<label for="tenor-1" class="block border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition">
+<div class="text-center">
+<h5 class="font-medium text-lg mb-2">1 Bulan</h5>
+<p class="text-sm text-gray-500 mb-1">Angsuran per bulan</p>
+<p id="monthly-1" class="font-bold text-gray-800 text-xl mb-2">Rp 5.255.000</p>
+<p class="text-sm text-gray-500 mb-1">Total Ujrah</p>
+<p id="ujrah-1" class="font-medium text-gray-800">Rp 255.000</p>
+</div>
+</label>
+</div>
+<div>
+<input type="radio" id="tenor-3" name="tenor" value="3" class="custom-radio hidden">
+<label for="tenor-3" class="block border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition">
+<div class="text-center">
+<h5 class="font-medium text-lg mb-2">3 Bulan</h5>
+<p class="text-sm text-gray-500 mb-1">Angsuran per bulan</p>
+<p id="monthly-3" class="font-bold text-gray-800 text-xl mb-2">Rp 1.752.000</p>
+<p class="text-sm text-gray-500 mb-1">Total Ujrah</p>
+<p id="ujrah-3" class="font-medium text-gray-800">Rp 255.000</p>
+</div>
+</label>
+</div>
+<div>
+<input type="radio" id="tenor-6" name="tenor" value="6" class="custom-radio hidden" checked>
+<label for="tenor-6" class="block border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary transition">
+<div class="text-center">
+<h5 class="font-medium text-lg mb-2">6 Bulan</h5>
+<p class="text-sm text-gray-500 mb-1">Angsuran per bulan</p>
+<p id="monthly-6" class="font-bold text-gray-800 text-xl mb-2">Rp 876.000</p>
+<p class="text-sm text-gray-500 mb-1">Total Ujrah</p>
+<p id="ujrah-6" class="font-medium text-gray-800">Rp 255.000</p>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-between">
+<button type="button" id="back-to-section-2" class="px-6 py-2 bg-gray-200 text-gray-700 font-medium rounded-button shadow hover:bg-gray-300 transition whitespace-nowrap">Kembali</button>
+<button type="button" id="next-to-section-4" class="px-6 py-2 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Lanjutkan</button>
+</div>
+</div>
+<!-- Section 4: Persetujuan -->
+<div id="section-4" class="form-section bg-white p-8 rounded-lg shadow-md mb-8 hidden">
+<h3 class="text-xl font-semibold text-gray-800 mb-6">Persetujuan</h3>
+<div class="space-y-4 mb-8">
+<div class="flex items-start">
+<input type="checkbox" id="agree-murabahah" class="custom-checkbox hidden">
+<label for="agree-murabahah" class="flex items-start cursor-pointer">
+<span class="w-5 h-5 border border-gray-300 rounded flex-shrink-0 mr-3 mt-0.5" style="display: inline-block;"></span>
+<span class="text-sm text-gray-700">Saya menyetujui dan memahami akad Murabahah yang akan digunakan dalam pembiayaan ini, di mana harga pokok dan margin keuntungan telah disepakati di awal.</span>
+</label>
+</div>
+<div class="flex items-start">
+<input type="checkbox" id="agree-terms" class="custom-checkbox hidden">
+<label for="agree-terms" class="flex items-start cursor-pointer">
+<span class="w-5 h-5 border border-gray-300 rounded flex-shrink-0 mr-3 mt-0.5" style="display: inline-block;"></span>
+<span class="text-sm text-gray-700">Saya menyetujui <a href="#" class="text-primary hover:underline">syarat dan ketentuan</a> yang berlaku untuk pengajuan pembiayaan ini.</span>
+</label>
+</div>
+<div class="flex items-start">
+<input type="checkbox" id="agree-privacy" class="custom-checkbox hidden">
+<label for="agree-privacy" class="flex items-start cursor-pointer">
+<span class="w-5 h-5 border border-gray-300 rounded flex-shrink-0 mr-3 mt-0.5" style="display: inline-block;"></span>
+<span class="text-sm text-gray-700">Saya menyetujui <a href="#" class="text-primary hover:underline">kebijakan privasi</a> dan memberikan izin untuk pengolahan data pribadi saya sesuai dengan ketentuan yang berlaku.</span>
+</label>
+</div>
+</div>
+<div class="bg-green-50 p-4 rounded-lg mb-8">
+<div class="flex">
+<div class="w-8 h-8 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+<i class="ri-information-line ri-lg"></i>
+</div>
+<div>
+<h4 class="text-sm font-medium text-green-700 mb-1">Informasi Proses</h4>
+<p class="text-sm text-green-600">Proses pengajuan pembiayaan akan memerlukan waktu 1-3 hari kerja. Tim kami akan menghubungi Anda untuk verifikasi dan konfirmasi lebih lanjut.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-between">
+<button type="button" id="back-to-section-3" class="px-6 py-2 bg-gray-200 text-gray-700 font-medium rounded-button shadow hover:bg-gray-300 transition whitespace-nowrap">Kembali</button>
+<button type="submit" class="px-8 py-3 bg-primary text-white font-medium rounded-button shadow-lg hover:bg-opacity-90 transition whitespace-nowrap">Ajukan Pembiayaan</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Keunggulan Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Keunggulan Pembiayaan Syariah Kami</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full mb-4">
+<i class="ri-hand-heart-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">Bebas Riba</h3>
+<p class="text-gray-600">Pembiayaan kami menggunakan prinsip jual beli (Murabahah) yang bebas dari riba dan bunga, sesuai dengan prinsip syariah Islam.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full mb-4">
+<i class="ri-scales-3-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">Transparan</h3>
+<p class="text-gray-600">Harga pokok dan margin keuntungan disepakati di awal, sehingga tidak ada biaya tersembunyi atau ketidakjelasan dalam akad.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full mb-4">
+<i class="ri-timer-flash-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3">Proses Cepat</h3>
+<p class="text-gray-600">Proses pengajuan yang mudah dan cepat, dengan persetujuan dalam 1-3 hari kerja untuk memenuhi kebutuhan finansial Anda.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Kalkulator Section -->
+<section id="kalkulator" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-4">Kalkulator Pembiayaan</h2>
+<p class="text-gray-600 text-center mb-12">Hitung estimasi pembiayaan dan angsuran Anda dengan mudah</p>
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<div class="mb-6">
+<label for="calc-amount" class="block text-sm font-medium text-gray-700 mb-1">Nominal Pembiayaan</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">Rp</span>
+<input type="text" id="calc-amount" inputmode="numeric" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="5.000.000">
+</div>
+</div>
+<div class="mb-6">
+<label for="calc-tenor" class="block text-sm font-medium text-gray-700 mb-1">Tenor</label>
+<div class="relative">
+<select id="calc-tenor" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none pr-8">
+<option value="1">1 Bulan</option>
+<option value="3">3 Bulan</option>
+<option value="6" selected>6 Bulan</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<button id="calculate-btn" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Hitung</button>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg">
+<h4 class="text-lg font-medium text-gray-800 mb-4">Hasil Perhitungan</h4>
+<div class="space-y-4">
+<div class="flex justify-between">
+<span class="text-gray-600">Harga Pokok</span>
+<span id="calc-principal" class="font-medium">Rp 5.000.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Margin</span>
+<span id="calc-margin" class="font-medium">Rp 500.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Biaya Administrasi</span>
+<span id="calc-admin" class="font-medium">Rp 100.000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Total Ujrah</span>
+<span id="calc-ujrah" class="font-medium">Rp 600.000</span>
+</div>
+<div class="pt-4 border-t border-gray-200">
+<div class="flex justify-between mb-2">
+<span class="font-medium text-gray-800">Total Pembiayaan</span>
+<span id="calc-total" class="font-bold text-primary">Rp 5.600.000</span>
+</div>
+<div class="flex justify-between">
+<span class="font-medium text-gray-800">Angsuran per Bulan</span>
+<span id="calc-monthly" class="font-bold text-primary">Rp 933.333</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tentang Kami Section -->
+<section id="tentang-kami" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-4">Tentang Kami</h2>
+<p class="text-gray-600 text-center mb-12">Solusi pembiayaan syariah terpercaya untuk kebutuhan finansial Anda</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<img src="https://public.readdy.ai/ai/img_res/1be5b1c31dcb38d118c0f4b9d6799514.jpg" alt="HBSyinc Syariah Office" class="w-full h-auto rounded-lg shadow-md">
+</div>
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4">HBSyinc Syariah</h3>
+<p class="text-gray-600 mb-4">HBSyinc Syariah adalah lembaga pembiayaan berbasis syariah yang berkomitmen untuk menyediakan solusi finansial yang sesuai dengan prinsip-prinsip Islam, bebas dari riba dan bunga.</p>
+<p class="text-gray-600 mb-4">Kami hadir untuk membantu masyarakat memenuhi kebutuhan finansial mereka dengan cara yang halal dan berkah, melalui skema pembiayaan Murabahah yang transparan dan adil.</p>
+<p class="text-gray-600 mb-6">Dengan tim profesional yang berpengalaman dan sistem yang modern, kami menawarkan proses pengajuan yang mudah, cepat, dan aman untuk berbagai kebutuhan pembiayaan Anda.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+<i class="ri-check-line ri-lg"></i>
+</div>
+<span class="text-gray-700">Sesuai Syariah</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+<i class="ri-check-line ri-lg"></i>
+</div>
+<span class="text-gray-700">Proses Cepat</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+<i class="ri-check-line ri-lg"></i>
+</div>
+<span class="text-gray-700">Aman & Terpercaya</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Hubungi Kami Section -->
+<section id="hubungi-kami" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-4">Hubungi Kami</h2>
+<p class="text-gray-600 text-center mb-12">Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan hubungi kami</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<h3 class="text-xl font-semibold text-gray-800 mb-4">Informasi Kontak</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-1">Alamat</h4>
+<p class="text-gray-600">Bendo, Padas, Ngawi, Jawa Timur</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-1">Telepon</h4>
+<p class="text-gray-600">085748575651</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-1">Email</h4>
+<p class="text-gray-600">info@hbsyinc.co.id</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+<i class="ri-time-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-1">Jam Operasional</h4>
+<p class="text-gray-600">Senin - Jumat: 08.00 - 16.00 WIB</p>
+<p class="text-gray-600">Sabtu: 08.00 - 12.00 WIB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-800 mb-4">Sosial Media</h3>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full hover:bg-opacity-20 transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full hover:bg-opacity-20 transition">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full hover:bg-opacity-20 transition">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-full hover:bg-opacity-20 transition">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-800 mb-4">Kirim Pesan</h3>
+<form>
+<div class="mb-4">
+<label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+<input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan nama lengkap">
+</div>
+<div class="mb-4">
+<label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan alamat email">
+</div>
+<div class="mb-4">
+<label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-1">Subjek</label>
+<input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan subjek pesan">
+</div>
+<div class="mb-6">
+<label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
+<textarea id="contact-message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Tulis pesan Anda di sini"></textarea>
+</div>
+<button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Kirim Pesan</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-3xl font-bold text-gray-800 text-center mb-4">Pertanyaan Umum</h2>
+<p class="text-gray-600 text-center mb-12">Jawaban untuk pertanyaan yang sering diajukan</p>
+<div class="space-y-4">
+<div class="bg-white p-4 rounded-lg shadow-md">
+<button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+<h3 class="text-lg font-medium text-gray-800">Apa itu akad Murabahah?</h3>
+<span class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-add-line ri-lg"></i>
+</span>
+</button>
+<div class="faq-content hidden mt-3 text-gray-600">
+<p>Akad Murabahah adalah akad jual beli di mana penjual (dalam hal ini lembaga pembiayaan) menyebutkan harga pokok barang dan margin keuntungan yang disepakati kepada pembeli. Akad ini bebas dari riba dan bunga, sesuai dengan prinsip syariah Islam.</p>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+<h3 class="text-lg font-medium text-gray-800">Berapa lama proses pengajuan pembiayaan?</h3>
+<span class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-add-line ri-lg"></i>
+</span>
+</button>
+<div class="faq-content hidden mt-3 text-gray-600">
+<p>Proses pengajuan pembiayaan di HBSyinc Syariah memerlukan waktu 1-3 hari kerja. Tim kami akan menghubungi Anda untuk verifikasi dan konfirmasi lebih lanjut setelah pengajuan diterima.</p>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+<h3 class="text-lg font-medium text-gray-800">Apa saja dokumen yang diperlukan?</h3>
+<span class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-add-line ri-lg"></i>
+</span>
+</button>
+<div class="faq-content hidden mt-3 text-gray-600">
+<p>Dokumen yang diperlukan untuk pengajuan pembiayaan meliputi:</p>
+<ul class="list-disc pl-5 mt-2">
+<li>Foto KTP</li>
+<li>Selfie dengan KTP</li>
+<li>Slip gaji atau bukti penghasilan 3 bulan terakhir</li>
+<li>Dokumen pendukung lainnya (jika diperlukan)</li>
+</ul>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+<h3 class="text-lg font-medium text-gray-800">Berapa maksimal pembiayaan yang bisa diajukan?</h3>
+<span class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-add-line ri-lg"></i>
+</span>
+</button>
+<div class="faq-content hidden mt-3 text-gray-600">
+<p>Maksimal pembiayaan yang dapat diajukan adalah Rp 10.000.000, disesuaikan dengan kemampuan finansial dan hasil analisa kredit. Batas ini ditetapkan untuk membantu membangun riwayat pembiayaan yang sehat, terutama bagi pemohon pertama.</p>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+<h3 class="text-lg font-medium text-gray-800">Bagaimana cara melakukan pembayaran angsuran?</h3>
+<span class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-add-line ri-lg"></i>
+</span>
+</button>
+<div class="faq-content hidden mt-3 text-gray-600">
+<p>Pembayaran angsuran dapat dilakukan melalui transfer bank ke rekening yang akan kami informasikan, atau melalui berbagai metode pembayaran digital seperti e-wallet dan virtual account. Detail pembayaran akan diberikan setelah pengajuan disetujui.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div>
+<h3 class="font-['Pacifico'] text-2xl mb-4">HBSyinc Syariah</h3>
+<p class="text-gray-300 mb-4">Tumbuh Bersama Desa, Berkah untuk Semua</p>
+<p class="text-gray-300 mb-4">Solusi pembiayaan syariah untuk masyarakat desa dengan prinsip Transparan dan Berkah</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-300 hover:text-white transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="text-gray-300 hover:text-white transition">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="text-gray-300 hover:text-white transition">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-4">Link Cepat</h4>
+<ul class="space-y-2">
+<li><a href="index.html" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+<li><a href="kalkulator.html" class="text-gray-300 hover:text-white transition">Kalkulator Pembiayaan</a></li>
+<li><a href="tentang-kami.html" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+<li><a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+<li><a href="syarat-ketentuan.html" class="text-gray-300 hover:text-white transition">Syarat & Ketentuan</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-4">Kontak</h4>
+<ul class="space-y-2">
+<li class="flex items-start">
+<i class="ri-map-pin-line mr-3 mt-1"></i>
+<span>Desa Bendo, Kecamatan Padas, Kabupaten Ngawi, Jawa Timur</span>
+</li>
+<li class="flex items-start">
+<i class="ri-phone-line mr-3 mt-1"></i>
+<span>085748575651</span>
+</li>
+<li class="flex items-start">
+<i class="ri-mail-line mr-3 mt-1"></i>
+<span>hbsyinc.syariah@gmail.com</span>
+</li>
+<li class="flex items-start">
+<i class="ri-time-line mr-3 mt-1"></i>
+<span>Senin - Jumat: 08.00 - 16.00 WIB<br>Sabtu: 08.00 - 12.00</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-6 border-t border-gray-700 text-center">
+<p class="text-gray-400 text-sm">&copy; 2025 HBSyinc Syariah. Hak Cipta Dilindungi.</p>
+</div>
+</div>
+</footer>
+<script>
+// Navigation for mobile
+document.querySelector('.md\\:hidden').addEventListener('click', function() {
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenu.classList.toggle('hidden');
+mobileMenu.classList.toggle('flex');
+});
+// Form navigation
+const sections = ['section-1', 'section-2', 'section-3', 'section-4'];
+const progressLine = document.querySelector('.progress-line-fill');
+function showSection(sectionId) {
+sections.forEach((id, index) => {
+const section = document.getElementById(id);
+const step = document.querySelectorAll('.progress-step')[index];
+if (id === sectionId) {
+section.classList.remove('hidden');
+step.classList.add('active');
+// Update progress bar
+const progressPercentage = (index / (sections.length - 1)) * 100;
+progressLine.style.width = `${progressPercentage}%`;
+// Mark previous steps as completed
+for (let i = 0; i < index; i++) {
+document.querySelectorAll('.progress-step')[i].classList.add('completed');
+}
+} else {
+section.classList.add('hidden');
+if (!step.classList.contains('completed')) {
+step.classList.remove('active');
+}
+}
+});
+}
+document.getElementById('next-to-section-2').addEventListener('click', function() {
+const fullname = document.getElementById('fullname').value.trim();
+const nik = document.getElementById('nik').value.trim();
+const phone = document.getElementById('phone').value.trim();
+let isValid = true;
+let errorMessage = '';
+if (!fullname) {
+isValid = false;
+document.getElementById('fullname').classList.add('border-red-500');
+errorMessage += 'Nama Lengkap wajib diisi\n';
+} else {
+document.getElementById('fullname').classList.remove('border-red-500');
+}
+if (!nik) {
+isValid = false;
+document.getElementById('nik').classList.add('border-red-500');
+errorMessage += 'NIK wajib diisi\n';
+} else {
+document.getElementById('nik').classList.remove('border-red-500');
+}
+if (!phone) {
+isValid = false;
+document.getElementById('phone').classList.add('border-red-500');
+errorMessage += 'Nomor Handphone wajib diisi\n';
+} else {
+document.getElementById('phone').classList.remove('border-red-500');
+}
+if (isValid) {
+showSection('section-2');
+} else {
+// Create and show validation error message
+const existingAlert = document.getElementById('validation-alert');
+if (existingAlert) {
+existingAlert.remove();
+}
+const alertDiv = document.createElement('div');
+alertDiv.id = 'validation-alert';
+alertDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4';
+alertDiv.innerHTML = `
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<div>
+<strong class="font-bold">Perhatian!</strong>
+<p class="text-sm mt-1">${errorMessage.replace(/\n/g, '<br>')}</p>
+</div>
+<button type="button" class="ml-auto" onclick="this.parentElement.parentElement.remove()">
+<i class="ri-close-line"></i>
+</button>
+</div>
+`;
+const formSection = document.getElementById('section-1');
+formSection.insertBefore(alertDiv, formSection.firstChild);
+// Scroll to the top of the form
+formSection.scrollIntoView({ behavior: 'smooth' });
+}
+});
+document.getElementById('back-to-section-1').addEventListener('click', () => showSection('section-1'));
+document.getElementById('next-to-section-3').addEventListener('click', function() {
+const ktpUpload = document.getElementById('ktp-upload');
+const selfieUpload = document.getElementById('selfie-upload');
+let isValid = true;
+let errorMessage = '';
+if (!ktpUpload.files || ktpUpload.files.length === 0) {
+isValid = false;
+errorMessage += 'Foto KTP wajib diunggah\n';
+}
+if (!selfieUpload.files || selfieUpload.files.length === 0) {
+isValid = false;
+errorMessage += 'Selfie dengan KTP wajib diunggah\n';
+}
+if (isValid) {
+showSection('section-3');
+} else {
+// Create and show validation error message
+const existingAlert = document.getElementById('validation-alert-section-2');
+if (existingAlert) {
+existingAlert.remove();
+}
+const alertDiv = document.createElement('div');
+alertDiv.id = 'validation-alert-section-2';
+alertDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4';
+alertDiv.innerHTML = `
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<div>
+<strong class="font-bold">Perhatian!</strong>
+<p class="text-sm mt-1">${errorMessage.replace(/\n/g, '<br>')}</p>
+</div>
+<button type="button" class="ml-auto" onclick="this.parentElement.parentElement.remove()">
+<i class="ri-close-line"></i>
+</button>
+</div>
+`;
+const formSection = document.getElementById('section-2');
+formSection.insertBefore(alertDiv, formSection.firstChild);
+// Scroll to the top of the form
+formSection.scrollIntoView({ behavior: 'smooth' });
+}
+});
+document.getElementById('back-to-section-2').addEventListener('click', () => showSection('section-2'));
+document.getElementById('next-to-section-4').addEventListener('click', function() {
+const itemName = document.getElementById('item-name').value.trim();
+const itemPrice = document.getElementById('item-price').value.trim();
+let isValid = true;
+let errorMessage = '';
+if (!itemName) {
+isValid = false;
+document.getElementById('item-name').classList.add('border-red-500');
+errorMessage += 'Nama Barang wajib diisi\n';
+} else {
+document.getElementById('item-name').classList.remove('border-red-500');
+}
+if (!itemPrice) {
+isValid = false;
+document.getElementById('item-price').classList.add('border-red-500');
+errorMessage += 'Harga Barang wajib diisi\n';
+} else {
+document.getElementById('item-price').classList.remove('border-red-500');
+}
+if (isValid) {
+showSection('section-4');
+} else {
+// Create and show validation error message
+const existingAlert = document.getElementById('validation-alert-section-3');
+if (existingAlert) {
+existingAlert.remove();
+}
+const alertDiv = document.createElement('div');
+alertDiv.id = 'validation-alert-section-3';
+alertDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4';
+alertDiv.innerHTML = `
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<div>
+<strong class="font-bold">Perhatian!</strong>
+<p class="text-sm mt-1">${errorMessage.replace(/\n/g, '<br>')}</p>
+</div>
+<button type="button" class="ml-auto" onclick="this.parentElement.parentElement.remove()">
+<i class="ri-close-line"></i>
+</button>
+</div>
+`;
+const formSection = document.getElementById('section-3');
+formSection.insertBefore(alertDiv, formSection.firstChild);
+// Scroll to the top of the form
+formSection.scrollIntoView({ behavior: 'smooth' });
+}
+});
+document.getElementById('back-to-section-3').addEventListener('click', () => showSection('section-3'));
+// File upload preview
+const fileInputs = [
+{ input: 'ktp-upload', preview: 'ktp-preview' },
+{ input: 'selfie-upload', preview: 'selfie-preview' },
+{ input: 'income-upload', preview: 'income-preview' }
+];
+fileInputs.forEach(item => {
+const input = document.getElementById(item.input);
+const preview = document.getElementById(item.preview);
+input.addEventListener('change', function() {
+if (this.files && this.files[0]) {
+const reader = new FileReader();
+reader.onload = function(e) {
+preview.innerHTML = '';
+const img = document.createElement('img');
+img.src = e.target.result;
+img.classList.add('h-full', 'mx-auto', 'object-contain');
+preview.appendChild(img);
+}
+reader.readAsDataURL(this.files[0]);
+}
+});
+preview.parentElement.addEventListener('click', function() {
+input.click();
+});
+});
+// Loan amount slider
+const loanSlider = document.getElementById('loan-amount');
+const loanDisplay = document.getElementById('loan-amount-display');
+const principalAmount = document.getElementById('principal-amount');
+const marginAmount = document.getElementById('margin-amount');
+const adminFee = document.getElementById('admin-fee');
+const totalUjrah = document.getElementById('total-ujrah');
+const totalFinancing = document.getElementById('total-financing');
+const monthly1 = document.getElementById('monthly-1');
+const monthly3 = document.getElementById('monthly-3');
+const monthly6 = document.getElementById('monthly-6');
+const ujrah1 = document.getElementById('ujrah-1');
+const ujrah3 = document.getElementById('ujrah-3');
+const ujrah6 = document.getElementById('ujrah-6');
+const itemPrice = document.getElementById('item-price');
+function formatCurrency(amount) {
+return new Intl.NumberFormat('id-ID').format(amount);
+}
+function calculateMarginAndAdmin(amount) {
+let margin, admin;
+if (amount < 500000) {
+margin = 20000;
+admin = 15000;
+} else if (amount < 1000000) {
+margin = 50000;
+admin = 30000;
+} else if (amount < 5000000) {
+margin = 100000;
+admin = 45000;
+} else {
+margin = amount * 0.04;
+admin = 55000;
+}
+return { margin, admin };
+}
+function roundToThousand(amount) {
+return Math.ceil(amount / 1000) * 1000;
+}
+function updateLoanCalculations() {
+const amount = parseInt(loanSlider.value);
+const { margin, admin } = calculateMarginAndAdmin(amount);
+const ujrah = margin + admin;
+const total = amount + ujrah;
+loanDisplay.textContent = formatCurrency(amount);
+principalAmount.textContent = `Rp ${formatCurrency(amount)}`;
+marginAmount.textContent = `Rp ${formatCurrency(margin)}`;
+adminFee.textContent = `Rp ${formatCurrency(admin)}`;
+totalUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
+totalFinancing.textContent = `Rp ${formatCurrency(total)}`;
+// Update tenor options
+monthly1.textContent = `Rp ${formatCurrency(roundToThousand(total))}`;
+monthly3.textContent = `Rp ${formatCurrency(roundToThousand(total / 3))}`;
+monthly6.textContent = `Rp ${formatCurrency(roundToThousand(total / 6))}`;
+ujrah1.textContent = `Rp ${formatCurrency(ujrah)}`;
+ujrah3.textContent = `Rp ${formatCurrency(ujrah)}`;
+ujrah6.textContent = `Rp ${formatCurrency(ujrah)}`;
+}
+// Sync item price with loan amount
+if (itemPrice) {
+itemPrice.addEventListener('input', function() {
+const price = parseInt(this.value.replace(/\D/g, '')) || 5000000;
+loanSlider.value = price;
+updateLoanCalculations();
+});
+loanSlider.addEventListener('input', function() {
+const amount = parseInt(this.value);
+itemPrice.value = formatCurrency(amount);
+});
+}
+loanSlider.addEventListener('input', updateLoanCalculations);
+updateLoanCalculations();
+// Calculator
+const calcAmount = document.getElementById('calc-amount');
+const calcTenor = document.getElementById('calc-tenor');
+const calcBtn = document.getElementById('calculate-btn');
+const calcPrincipal = document.getElementById('calc-principal');
+const calcMargin = document.getElementById('calc-margin');
+const calcAdmin = document.getElementById('calc-admin');
+const calcUjrah = document.getElementById('calc-ujrah');
+const calcTotal = document.getElementById('calc-total');
+const calcMonthly = document.getElementById('calc-monthly');
+calcBtn.addEventListener('click', function() {
+const amount = parseInt(calcAmount.value.replace(/\D/g, '')) || 5000000;
+const tenor = parseInt(calcTenor.value);
+const { margin, admin } = calculateMarginAndAdmin(amount);
+const ujrah = margin + admin;
+const total = amount + ujrah;
+calcPrincipal.textContent = `Rp ${formatCurrency(amount)}`;
+calcMargin.textContent = `Rp ${formatCurrency(margin)}`;
+calcAdmin.textContent = `Rp ${formatCurrency(admin)}`;
+calcUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
+calcTotal.textContent = `Rp ${formatCurrency(total)}`;
+calcMonthly.textContent = `Rp ${formatCurrency(roundToThousand(total / tenor))}`;
+});
+// FAQ toggles
+const faqToggles = document.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('i');
+content.classList.toggle('hidden');
+if (content.classList.contains('hidden')) {
+icon.classList.remove('ri-subtract-line');
+icon.classList.add('ri-add-line');
+} else {
+icon.classList.remove('ri-add-line');
+icon.classList.add('ri-subtract-line');
+}
+});
+});
+// Form submission
+document.getElementById('application-form').addEventListener('submit', function(e) {
+e.preventDefault();
+// Validate checkboxes in section 4
+const agreeTerms = document.getElementById('agree-terms').checked;
+const agreePrivacy = document.getElementById('agree-privacy').checked;
+const agreeMurabahah = document.getElementById('agree-murabahah').checked;
+if (!agreeTerms || !agreePrivacy || !agreeMurabahah) {
+const existingAlert = document.getElementById('validation-alert-section-4');
+if (existingAlert) {
+existingAlert.remove();
+}
+const alertDiv = document.createElement('div');
+alertDiv.id = 'validation-alert-section-4';
+alertDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4';
+alertDiv.innerHTML = `
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<div>
+<strong class="font-bold">Perhatian!</strong>
+<p class="text-sm mt-1">Anda harus menyetujui semua persyaratan untuk melanjutkan</p>
+</div>
+<button type="button" class="ml-auto" onclick="this.parentElement.parentElement.remove()">
+<i class="ri-close-line"></i>
+</button>
+</div>
+`;
+const formSection = document.getElementById('section-4');
+formSection.insertBefore(alertDiv, formSection.firstChild);
+formSection.scrollIntoView({ behavior: 'smooth' });
+return;
+}
+// Collect form data
+const fullname = document.getElementById('fullname').value.trim();
+const nik = document.getElementById('nik').value.trim();
+const phone = document.getElementById('phone').value.trim();
+const email = document.getElementById('email').value.trim();
+const address = document.getElementById('address').value.trim();
+const maritalStatus = document.getElementById('marital-status').value;
+const occupation = document.getElementById('occupation').value;
+const itemName = document.getElementById('item-name').value.trim();
+const itemPrice = document.getElementById('item-price').value.trim();
+const loanAmount = document.getElementById('loan-amount').value;
+const selectedTenor = document.querySelector('input[name="tenor"]:checked').value;
+// Format message for WhatsApp
+let message = `*PENGAJUAN PEMBIAYAAN HBSYINC SYARIAH*%0A%0A`;
+message += `*Data Diri*%0A`;
+message += `Nama: ${fullname}%0A`;
+message += `NIK: ${nik}%0A`;
+message += `No. HP: ${phone}%0A`;
+message += email ? `Email: ${email}%0A` : '';
+message += address ? `Alamat: ${address}%0A` : '';
+message += maritalStatus ? `Status Pernikahan: ${maritalStatus}%0A` : '';
+message += occupation ? `Pekerjaan: ${occupation}%0A%0A` : '%0A';
+message += `*Data Pembiayaan*%0A`;
+message += `Nama Barang: ${itemName}%0A`;
+message += `Harga Barang: Rp ${itemPrice}%0A`;
+message += `Nominal Pembiayaan: Rp ${formatCurrency(loanAmount)}%0A`;
+message += `Tenor: ${selectedTenor} bulan%0A`;
+message += `Angsuran per Bulan: ${document.getElementById('monthly-'+selectedTenor).textContent}%0A%0A`;
+message += `*Dokumen*%0A`;
+message += `KTP: Sudah diunggah%0A`;
+message += `Selfie dengan KTP: Sudah diunggah%0A`;
+message += document.getElementById('income-upload').files.length > 0 ? `Bukti Penghasilan: Sudah diunggah%0A%0A` : '%0A';
+message += `Terima kasih telah mengajukan pembiayaan di HBSyinc Syariah.`;
+// Create success message
+const successDiv = document.createElement('div');
+successDiv.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50';
+successDiv.innerHTML = `
+<div class="bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-md w-full mx-4">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-check-line ri-2x text-green-500"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">Pengajuan Berhasil!</h3>
+<p class="text-gray-600">Terima kasih telah mengajukan pembiayaan. Anda akan diarahkan ke WhatsApp untuk mengirimkan detail pengajuan.</p>
+</div>
+<div class="flex justify-center">
+<button id="close-success" class="px-6 py-2 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Tutup</button>
+</div>
+</div>
+`;
+document.body.appendChild(successDiv);
+document.getElementById('close-success').addEventListener('click', function() {
+successDiv.remove();
+// Redirect to WhatsApp
+window.open(`https://wa.me/085748575651?text=${message}`, '_blank');
+});
+});
+// Add input mode for numeric fields
+document.getElementById('nik').setAttribute('inputmode', 'numeric');
+document.getElementById('phone').setAttribute('inputmode', 'numeric');
+document.getElementById('item-price').setAttribute('inputmode', 'numeric');
+// Fix viewport issues on mobile
+function adjustViewport() {
+const viewportMeta = document.querySelector('meta[name="viewport"]');
+if (window.innerWidth < 768) {
+document.documentElement.style.fontSize = '14px';
+} else {
+document.documentElement.style.fontSize = '16px';
+}
+}
+window.addEventListener('resize', adjustViewport);
+adjustViewport();
+</script>
+</body>
+</html>
