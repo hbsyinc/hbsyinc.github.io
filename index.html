@@ -734,25 +734,40 @@ width: 100%;
 </div>
 <div class="bg-white p-6 rounded-lg shadow-md">
 <h3 class="text-xl font-semibold text-gray-800 mb-4">Kirim Pesan</h3>
-<form>
-<div class="mb-4">
-<label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-<input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan nama lengkap">
-</div>
-<div class="mb-4">
-<label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-<input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan alamat email">
-</div>
-<div class="mb-4">
-<label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-1">Subjek</label>
-<input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan subjek pesan">
-</div>
-<div class="mb-6">
-<label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
-<textarea id="contact-message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Tulis pesan Anda di sini"></textarea>
-</div>
-<a href="https://wa.me/+6285748575651" target="_blank" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Kirim Pesan</a>
+<form id="contact-form" onsubmit="sendToWhatsApp(); return false;">
+  <div class="mb-4">
+    <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+    <input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan nama lengkap">
+  </div>
+  <div class="mb-4">
+    <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+    <input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan alamat email">
+  </div>
+  <div class="mb-4">
+    <label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-1">Subjek</label>
+    <input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Masukkan subjek pesan">
+  </div>
+  <div class="mb-6">
+    <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
+    <textarea id="contact-message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Tulis pesan Anda di sini"></textarea>
+  </div>
+  <button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow hover:bg-opacity-90 transition whitespace-nowrap">Kirim Pesan</button>
 </form>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById("contact-name").value;
+    const email = document.getElementById("contact-email").value;
+    const subject = document.getElementById("contact-subject").value;
+    const message = document.getElementById("contact-message").value;
+
+    const whatsappNumber = "6285748575651"; // Ganti dengan nomor kamu, tanpa +
+    const url = `https://wa.me/${whatsappNumber}?text=Halo,%20nama%20saya%20${encodeURIComponent(name)}.%0AEmail:%20${encodeURIComponent(email)}%0ASubjek:%20${encodeURIComponent(subject)}%0APesan:%20${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  }
+</script>
+
 </div>
 </div>
 </div>
