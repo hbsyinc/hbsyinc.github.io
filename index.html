@@ -119,24 +119,31 @@ width: 100%;
 </header>
   
 <!-- Hero Section -->
-  <div class="relative w-full overflow-hidden max-h-[400px] md:max-h-[600px]">
+  <div class="relative w-full overflow-hidden h-[400px] md:h-[500px]">
   <!-- Gambar -->
-  <img src="image_2.jpg" alt="HBSyinc Syariah" class="w-full h-full object-cover rounded-lg shadow-md">
+  <img src="image_2.jpg" alt="HBSyinc Syariah"
+       class="absolute inset-0 w-full h-full object-cover rounded-lg">
 
   <!-- Overlay -->
   <div class="absolute inset-0 bg-primary bg-opacity-70"></div>
 
   <!-- Konten -->
-  <div class="absolute inset-0 flex items-center justify-center px-4 py-8 md:py-16 z-10">
-    <div class="text-white max-w-2xl text-center">
+  <div class="relative z-10 flex items-center justify-center h-full px-4">
+    <div class="text-white text-center max-w-xl">
       <h2 class="font-['Pacifico'] text-lg md:text-2xl mb-2">HBSyinc Syariah</h2>
-      <h1 class="text-xl md:text-4xl font-bold mb-4 leading-tight">Tumbuh Bersama Desa, Berkah untuk Semua</h1>
-      <p class="text-sm md:text-lg mb-6">Hadir di tengah kebutuhan Kota Ngawi dan Kawasan Desa Pertanian, HBSyinc Syariah menawarkan solusi pembiayaan berbasis syariah melalui skema Murabahah.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#kalkulator" class="text-center px-6 py-2 bg-white text-primary font-medium rounded-button shadow-lg hover:bg-gray-50 transition whitespace-nowrap inline-block">
+      <h1 class="text-xl md:text-4xl font-bold mb-4 leading-tight">
+        Tumbuh Bersama Desa, Berkah untuk Semua
+      </h1>
+      <p class="text-sm md:text-lg mb-6">
+        Hadir di tengah kebutuhan Kota Ngawi dan Kawasan Desa Pertanian, HBSyinc Syariah menawarkan solusi pembiayaan berbasis syariah melalui skema Murabahah.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#kalkulator"
+           class="px-6 py-2 bg-white text-primary font-medium rounded-button shadow hover:bg-gray-100 transition">
           Hitung Pembiayaan
         </a>
-        <a href="#application-form" class="text-center px-6 py-2 bg-primary text-white border border-white font-medium rounded-button shadow-lg hover:bg-opacity-90 transition whitespace-nowrap">
+        <a href="#application-form"
+           class="px-6 py-2 bg-primary text-white border border-white font-medium rounded-button shadow hover:bg-opacity-90 transition">
           Ajukan Sekarang
         </a>
       </div>
