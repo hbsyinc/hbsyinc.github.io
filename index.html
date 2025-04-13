@@ -1167,7 +1167,8 @@ admin = 40000;
 margin = amount * 0.095;
 admin = 50000;
 }
-return { margin, admin };
+  margin = Math.ceil(margin / 100) * 100;
+  return { margin, admin };
 }
 function roundToHundred(amount) {
 return Math.ceil(amount / 100) * 100;
