@@ -1167,11 +1167,11 @@ admin = 40000;
 margin = amount * 0.095;
 admin = 50000;
 }
-  margin = Math.ceil(margin / 100) * 100;
+  margin = Math.ceil(margin / 1000) * 1000;
   return { margin, admin };
 }
-function roundToHundred(amount) {
-return Math.ceil(amount / 100) * 100;
+function roundToThousand(amount) {
+return Math.ceil(amount / 1000) * 1000;
 }
 function updateLoanCalculations() {
 const amount = parseInt(loanSlider.value);
@@ -1185,9 +1185,9 @@ adminFee.textContent = `Rp ${formatCurrency(admin)}`;
 totalUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
 totalFinancing.textContent = `Rp ${formatCurrency(total)}`;
 // Update tenor options
-monthly1.textContent = `Rp ${formatCurrency(roundToHundred(total))}`;
-monthly3.textContent = `Rp ${formatCurrency(roundToHundred(total / 3))}`;
-monthly6.textContent = `Rp ${formatCurrency(roundToHundred(total / 6))}`;
+monthly1.textContent = `Rp ${formatCurrency(roundToThousand(total))}`;
+monthly3.textContent = `Rp ${formatCurrency(roundToThousand(total / 3))}`;
+monthly6.textContent = `Rp ${formatCurrency(roundToThousand(total / 6))}`;
 ujrah1.textContent = `Rp ${formatCurrency(ujrah)}`;
 ujrah3.textContent = `Rp ${formatCurrency(ujrah)}`;
 ujrah6.textContent = `Rp ${formatCurrency(ujrah)}`;
@@ -1227,7 +1227,7 @@ calcMargin.textContent = `Rp ${formatCurrency(margin)}`;
 calcAdmin.textContent = `Rp ${formatCurrency(admin)}`;
 calcUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
 calcTotal.textContent = `Rp ${formatCurrency(total)}`;
-calcMonthly.textContent = `Rp ${formatCurrency(roundToHundred(total / tenor))}`;
+calcMonthly.textContent = `Rp ${formatCurrency(roundToThousand(total / tenor))}`;
 });
 // FAQ toggles
 const faqToggles = document.querySelectorAll('.faq-toggle');
