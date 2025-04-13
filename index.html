@@ -1185,7 +1185,7 @@ adminFee.textContent = `Rp ${formatCurrency(admin)}`;
 totalUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
 totalFinancing.textContent = `Rp ${formatCurrency(total)}`;
 // Update tenor options
-monthly1.textContent = `Rp ${formatCurrency(roundToThousand(total))}`;
+monthly1.textContent = `Rp ${formatCurrency(roundToHundred(total))}`;
 monthly3.textContent = `Rp ${formatCurrency(roundToThousand(total / 3))}`;
 monthly6.textContent = `Rp ${formatCurrency(roundToThousand(total / 6))}`;
 ujrah1.textContent = `Rp ${formatCurrency(ujrah)}`;
@@ -1227,7 +1227,7 @@ calcMargin.textContent = `Rp ${formatCurrency(margin)}`;
 calcAdmin.textContent = `Rp ${formatCurrency(admin)}`;
 calcUjrah.textContent = `Rp ${formatCurrency(ujrah)}`;
 calcTotal.textContent = `Rp ${formatCurrency(total)}`;
-calcMonthly.textContent = `Rp ${formatCurrency(roundToThousand(total / tenor))}`;
+calcMonthly.textContent = `Rp ${formatCurrency(roundToHundred(total / tenor))}`;
 });
 // FAQ toggles
 const faqToggles = document.querySelectorAll('.faq-toggle');
