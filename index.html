@@ -1294,6 +1294,7 @@ const loanAmount = document.getElementById('loan-amount').value;
 const selectedTenor = document.querySelector('input[name="tenor"]:checked').value;
 // Format message for WhatsApp
 let message = `*PENGAJUAN PEMBIAYAAN HBSYINC SYARIAH*%0A%0A`;
+message += `Halo Admin, Saya ingin mengajuan permohonan:%0A`;
 message += `*Data Diri*%0A`;
 message += `Nama: ${fullname}%0A`;
 message += `NIK: ${nik}%0A`;
@@ -1310,6 +1311,7 @@ message += `Nominal Pembiayaan: Rp ${formatCurrency(loanAmount)}%0A`;
 message += `Tenor: ${selectedTenor} bulan%0A`;
 message += `Angsuran per Bulan: ${document.getElementById('monthly-'+selectedTenor).textContent}%0A%0A`;
 message += `*Dokumen*%0A`;
+message += `*Mohon untuk mengirim kembali dokumen yang sudah diupload*%0A`;
 message += `KTP: Sudah diunggah%0A`;
 message += `Selfie dengan KTP: Sudah diunggah%0A`;
 message += document.getElementById('income-upload').files.length > 0 ? `Bukti Penghasilan: Sudah diunggah%0A%0A` : '%0A';
